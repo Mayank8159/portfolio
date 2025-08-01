@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { ThemeToggle } from "./ThemeToggle.jsx";
 
 const navItems = [
   { name: "Home", href: "#hero" },
@@ -8,6 +9,7 @@ const navItems = [
   { name: "Skills", href: "#skills" },
   { name: "Projects", href: "#projects" },
   { name: "Contact", href: "#contact" },
+  { component: <ThemeToggle />, href: "#" }
 ];
 
 export const Navbar = () => {
