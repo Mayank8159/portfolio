@@ -12,20 +12,19 @@ export const AboutSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h3 className="text-2xl font-semibold">
-              Passionate Web Developer & Tech Creator
+              Passionate Full Stack Developer and AI/ML Enthusiast
             </h3>
 
             <p className="text-muted-foreground">
-              With over 5 years of experience in web development, I specialize
-              in creating responsive, accessible, and performant web
-              applications using modern technologies.
+              With a strong foundation in web development and a keen interest in
+              artificial intelligence, I specialize in creating innovative
+              solutions that bridge the gap between technology and user experience.
             </p>
 
             <p className="text-muted-foreground">
-              I'm passionate about creating elegant solutions to complex
-              problems, and I'm constantly learning new technologies and
-              techniques to stay at the forefront of the ever-evolving web
-              landscape.
+              My journey in tech has been driven by a passion for learning and
+              exploring new technologies. I'm always eager to take on new
+              challenges and push the boundaries of what's possible.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
@@ -35,7 +34,7 @@ export const AboutSection = () => {
               </a>
 
               <a
-                href=""
+                href="https://docs.google.com/document/d/1-V0fXRCUTkK9XLTSEwT6KHREnWOfGnlvwIUzIbOzmJY/edit?usp=sharing"
                 className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
               >
                 Download CV
@@ -64,10 +63,10 @@ export const AboutSection = () => {
                   <User className="h-6 w-6 text-primary" />
                 </div>
                 <div className="text-left">
-                  <h4 className="font-semibold text-lg">UI/UX Design</h4>
+                  <h4 className="font-semibold text-lg">AI/ML Development</h4>
                   <p className="text-muted-foreground">
-                    Designing intuitive user interfaces and seamless user
-                    experiences.
+                    Building intelligent applications with machine learning
+                    algorithms and data-driven insights.
                   </p>
                 </div>
               </div>
