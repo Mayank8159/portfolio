@@ -22,7 +22,7 @@ export const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      await axios.post("http://localhost:3000/api/send-email", {
+      await axios.post("https://portfolio-pkmi.onrender.com/api/send-email", {
         email,
         message,
       });
