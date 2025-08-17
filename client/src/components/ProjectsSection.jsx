@@ -22,13 +22,13 @@ const projects = [
   },
   {
     id: 3,
-    title: "Teacher Dashboard",
+    title: "QuickAI",
     description:
-      "Admin dashboard for managing teacher profiles and courses.",
-    image: "/projects/img3.png",
-    tags: ["React", "Node.js", "firebase"],
-    demoUrl: "https://teacher2-admin.vercel.app/",
-    githubUrl: "https://github.com/Mayank8159/InternAdmin",
+      "A web app that has various AI tools for young creators.",
+    image: "/projects/img5.png",
+    tags: ["React", "Clerk", "PERN"],
+    demoUrl: "https://quick-ai-two-lyart.vercel.app/",
+    githubUrl: "https://github.com/Mayank8159/QuickAI",
   },
 ];
 
