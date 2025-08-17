@@ -12,13 +12,13 @@ const projects = [
   },
   {
     id: 2,
-    title: "Shoe Store App",
+    title: "Technologia",
     description:
-      "E-commerce application for buying and selling shoes.",
-    image: "/projects/img2.png",
-    tags: ["Flutter", "Dart", "Express.js"],
-    demoUrl: "https://codewizarded.in",
-    githubUrl: "https://github.com/Mayank8159/fluttershop",
+      "I along with a team of developers built a website for our college hackathon.",
+    image: "/projects/img4.png",
+    tags: ["React", "GSAP", "Express.js"],
+    demoUrl: "https://www.technologia-iem.tech/",
+    githubUrl: "https://github.com/rajeet-04/technologia",
   },
   {
     id: 3,
