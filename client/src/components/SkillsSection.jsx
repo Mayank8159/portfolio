@@ -22,9 +22,30 @@ const skills = [
   { name: "Docker", level: 70, category: "tools" },
   { name: "Figma", level: 85, category: "tools" },
   { name: "VS Code", level: 95, category: "tools" },
+
+  // 3D Design
+  { name: "Blender", level: 75, category: "3D Design" },
+
+  // AI/ML
+  { name: "Python", level: 70, category: "AI/ML" },
+  { name: "TensorFlow", level: 60, category: "AI/ML" },
+  { name: "PyTorch", level: 60, category: "AI/ML" },
+
+  // Game Development
+  { name: "Unity", level: 65, category: "Game Development" },
+  { name: "C#", level: 70, category: "Game Development" },
+
+  // Embedded Systems
+  { name: "KiCad", level: 75, category: "Embedded Systems" },
+  { name: "Altium CircuitMaker", level: 75, category: "Embedded Systems" },
+  { name: "Labcenter Proteus", level: 70, category: "Embedded Systems" },
+  { name: "Arduino", level: 70, category: "Embedded Systems" },
+  { name: "Raspberry Pi", level: 65, category: "Embedded Systems" },
+
+
 ];
 
-const categories = ["all", "frontend", "backend", "tools"];
+const categories = ["all", "frontend", "backend", "tools", "3D Design", "AI/ML", "Game Development", "Embedded Systems"];
 
 export const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
