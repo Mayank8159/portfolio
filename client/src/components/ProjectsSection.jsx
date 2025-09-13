@@ -3,12 +3,12 @@ import { ArrowRight, ExternalLink, Github } from "lucide-react";
 const projects = [
   {
     id: 1,
-    title: "BetGold",
-    description: "Betting platform with real-time odds and user authentication.",
-    image: "/projects/img1.png",
+    title: "SafePath",
+    description: "A Climate Resilient Website for Safer Journeys.",
+    image: "/projects/img6.png",
     tags: ["React", "TailwindCSS", "Express.js"],
-    demoUrl: "https://betgold.nl",
-    githubUrl: "https://github.com/DIPRO2000/bidgold",
+    demoUrl: "https://safepath81.vercel.app/",
+    githubUrl: "https://github.com/Mayank8159/hackathon2",
   },
   {
     id: 2,
