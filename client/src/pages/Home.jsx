@@ -10,7 +10,7 @@ import { Footer } from "../components/Footer";
 
 export const Home = () => {
   return (
-    <div className="min-h-screen bg-background bg-gradient-to-b from-background to-accent text-foreground overflow-x-hidden">
+    <div className="min-h-screen bg-gradient-to-b from-[#fdfdfd] via-[#f0f4f8] to-[#e0ecf4] text-gray-800 overflow-x-hidden">
       {/* Theme Toggle */}
       <ThemeToggle />
       {/* Background Effects */}
