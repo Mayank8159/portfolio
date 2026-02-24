@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import * as THREE from "three";
 
-export const CosmicLoader = ({ duration = 1400 }) => {
+export const CosmicLoader = ({ duration = 2200 }) => {
   const [isVisible, setIsVisible] = useState(true);
   const mountRef = useRef(null);
 
@@ -66,6 +66,53 @@ export const CosmicLoader = ({ duration = 1400 }) => {
     ring.rotation.y = Math.PI * 0.2;
     group.add(ring);
 
+    const satelliteGroup = new THREE.Group();
+    group.add(satelliteGroup);
+
+    const satellite = new THREE.Mesh(
+      new THREE.SphereGeometry(0.45, 16, 16),
+      new THREE.MeshStandardMaterial({
+        color: 0xffffff,
+        emissive: 0x1b2c4a,
+        roughness: 0.6,
+      })
+    );
+    satellite.position.set(4.8, 0, 0);
+    satelliteGroup.add(satellite);
+
+    const moons = [
+      {
+        mesh: new THREE.Mesh(
+          new THREE.SphereGeometry(0.28, 14, 14),
+          new THREE.MeshStandardMaterial({
+            color: 0xbcd7ff,
+            emissive: 0x13233d,
+            roughness: 0.7,
+          })
+        ),
+        radius: 3.4,
+        speed: 1.6,
+        offset: 0.4,
+      },
+      {
+        mesh: new THREE.Mesh(
+          new THREE.SphereGeometry(0.22, 14, 14),
+          new THREE.MeshStandardMaterial({
+            color: 0xffd6a5,
+            emissive: 0x3a1e08,
+            roughness: 0.8,
+          })
+        ),
+        radius: 4.6,
+        speed: 1.1,
+        offset: 1.7,
+      },
+    ];
+
+    moons.forEach(({ mesh }) => {
+      satelliteGroup.add(mesh);
+    });
+
     const sparkGeometry = new THREE.BufferGeometry();
     const sparkCount = 120;
     const sparkPositions = new Float32Array(sparkCount * 3);
@@ -93,13 +140,24 @@ export const CosmicLoader = ({ duration = 1400 }) => {
     );
     group.add(sparks);
 
+    const clock = new THREE.Clock();
     let animationId = 0;
     const animate = () => {
-      group.rotation.y += 0.008;
-      group.rotation.x += 0.003;
-      planet.rotation.y += 0.012;
-      ring.rotation.z += 0.004;
-      sparks.rotation.y -= 0.006;
+      const elapsed = clock.getElapsedTime();
+      group.rotation.y = elapsed * 0.35;
+      group.rotation.x = Math.sin(elapsed * 0.2) * 0.08;
+      planet.rotation.y = elapsed * 0.8;
+      ring.rotation.z = elapsed * 0.4;
+      sparks.rotation.y = -elapsed * 0.5;
+      satelliteGroup.rotation.y = elapsed * 1.4;
+      satelliteGroup.rotation.x = Math.sin(elapsed * 0.8) * 0.25;
+
+      moons.forEach(({ mesh, radius, speed, offset }) => {
+        const angle = elapsed * speed + offset;
+        mesh.position.x = Math.cos(angle) * radius;
+        mesh.position.z = Math.sin(angle) * radius;
+        mesh.position.y = Math.sin(angle * 0.6) * 0.4;
+      });
 
       renderer.render(scene, camera);
       animationId = window.requestAnimationFrame(animate);
@@ -121,6 +179,12 @@ export const CosmicLoader = ({ duration = 1400 }) => {
       planet.material.dispose();
       ring.geometry.dispose();
       ring.material.dispose();
+      satellite.geometry.dispose();
+      satellite.material.dispose();
+      moons.forEach(({ mesh }) => {
+        mesh.geometry.dispose();
+        mesh.material.dispose();
+      });
       sparkGeometry.dispose();
       sparks.material.dispose();
       renderer.dispose();
