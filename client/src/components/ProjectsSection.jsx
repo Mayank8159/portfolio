@@ -52,12 +52,17 @@ export const ProjectsSection = () => {
               key={key}
               className="group rounded-lg overflow-hidden card-hover cosmic-panel"
             >
-              <div className="h-48 overflow-hidden">
+              <div className="h-48 overflow-hidden relative">
                 <img
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
+                <div className="absolute inset-0 bg-linear-to-t from-background/80 via-background/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                  <span className="text-xs uppercase tracking-[0.2em] text-foreground/80">View Project</span>
+                  <span className="text-xs text-primary">Explore</span>
+                </div>
               </div>
 
               <div className="p-6">

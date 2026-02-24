@@ -13,19 +13,25 @@ const navItems = [
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
+      const totalScroll =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const progress = totalScroll > 0 ? window.scrollY / totalScroll : 0;
+      setScrollProgress(progress);
     };
 
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
     <nav
       className={cn(
-        "fixed w-full z-40 transition-all duration-300",
+        "fixed w-full z-40 transition-all duration-300 relative",
         isScrolled
           ? "py-3 bg-background/80 backdrop-blur-md shadow-xs border-b border-border/60"
           : "py-5"
@@ -87,6 +93,9 @@ export const Navbar = () => {
             ))}
           </div>
         </div>
+      </div>
+      <div className="cosmic-progress absolute bottom-0 left-0">
+        <span style={{ transform: `scaleX(${scrollProgress})` }} />
       </div>
     </nav>
   );

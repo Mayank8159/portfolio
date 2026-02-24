@@ -24,6 +24,12 @@ export const HeroSection = () => {
             I am an CSE AI & ML student in UNIVERSITY OF ENGINEERING AND MANAGEMENT - KOLKATA (2024 - 2028), besides this i love creating and working on innovative ideas.
           </p>
 
+          <div className="flex flex-wrap justify-center gap-3 opacity-0 animate-fade-in-delay-3">
+            <span className="cosmic-pill">Full Stack + AI/ML</span>
+            <span className="cosmic-pill">React + Three.js</span>
+            <span className="cosmic-pill">Building Bold Ideas</span>
+          </div>
+
           <div className="pt-4 opacity-0 animate-fade-in-delay-4">
             <a href="#projects" className="cosmic-button">
               View My Work

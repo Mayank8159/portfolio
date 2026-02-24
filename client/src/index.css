@@ -26,6 +26,7 @@
   --animate-fade-in-delay-3: fade-in 0.7s ease-out 0.6s forwards;
   --animate-fade-in-delay-4: fade-in 0.7s ease-out 0.8s forwards;
   --animate-meteor: meteor 5s linear infinite;
+  --animate-shimmer: shimmer 2.6s linear infinite;
 
   @keyframes float {
     0%,
@@ -66,6 +67,15 @@
     100% {
       transform: rotate(215deg) translateX(-500px);
       opacity: 0;
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-120%);
+    }
+    100% {
+      transform: translateX(120%);
     }
   }
 }
@@ -160,6 +170,42 @@
 
 @utility cosmic-panel {
   @apply bg-card/70 backdrop-blur-md border border-border/60 shadow-lg;
+}
+
+@layer components {
+  .cosmic-pill {
+    @apply inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs
+           uppercase tracking-[0.2em] text-foreground/80 border border-border/60;
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(30, 64, 175, 0.4));
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.15);
+  }
+
+  .cosmic-progress {
+    @apply h-[2px] w-full bg-border/40 overflow-hidden;
+  }
+
+  .cosmic-progress > span {
+    @apply block h-full origin-left;
+    background: linear-gradient(90deg, rgba(248, 200, 112, 0.9), rgba(56, 189, 248, 0.95));
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+  }
+
+  .cosmic-bar {
+    @apply relative h-2 rounded-full bg-secondary/70 overflow-hidden;
+  }
+
+  .cosmic-bar-fill {
+    @apply h-full rounded-full bg-primary;
+    box-shadow: 0 0 10px rgba(248, 200, 112, 0.35);
+  }
+
+  .cosmic-bar-fill::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 2.6s linear infinite;
+  }
 }
 
 @utility gradient-border {
