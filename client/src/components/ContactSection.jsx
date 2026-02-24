@@ -17,7 +17,8 @@ export const ContactSection = () => {
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const apiBaseUrl =
-    import.meta.env.VITE_API_BASE_URL?.trim() || "http://localhost:3000";
+    import.meta.env.VITE_API_BASE_URL?.trim() ||
+    "https://portfolio-degk.onrender.com";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
