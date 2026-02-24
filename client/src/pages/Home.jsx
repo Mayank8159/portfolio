@@ -1,4 +1,5 @@
 import { Navbar } from "../components/Navbar";
+import { CosmicLoader } from "../components/CosmicLoader";
 import { ThreeBackground } from "@/components/ThreeBackground";
 import { HeroSection } from "../components/HeroSection";
 import { AboutSection } from "../components/AboutSection";
@@ -10,6 +11,7 @@ import { Footer } from "../components/Footer";
 export const Home = () => {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
+      <CosmicLoader />
       {/* Background Effects */}
       <ThreeBackground />
 
