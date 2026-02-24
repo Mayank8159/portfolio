@@ -28,7 +28,7 @@ export const ContactSection = () => {
       await axios.post(
         `${apiBaseUrl}/api/send-email`,
         { email, message },
-        { timeout: 10000 }
+        { timeout: 20000 }
       );
       toast.success("Message sent successfully!");
       setEmail("");

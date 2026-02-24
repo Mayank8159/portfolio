@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Navbar } from "../components/Navbar";
 import { CosmicLoader } from "../components/CosmicLoader";
 import { ThreeBackground } from "@/components/ThreeBackground";
@@ -9,6 +10,15 @@ import { ContactSection } from "../components/ContactSection";
 import { Footer } from "../components/Footer";
 
 export const Home = () => {
+  useEffect(() => {
+    const apiBaseUrl =
+      import.meta.env.VITE_API_BASE_URL?.trim() ||
+      "https://portfolio-degk.onrender.com";
+    fetch(`${apiBaseUrl}/api/health`, { method: "GET" }).catch(() => {
+      // No-op: warm-up ping should not block rendering.
+    });
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden relative">
       <CosmicLoader />
