@@ -16,22 +16,29 @@ export const ContactSection = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const apiBaseUrl =
+    import.meta.env.VITE_API_BASE_URL?.trim() || "http://localhost:3000";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      await axios.post("https://portfolio-pkmi.onrender.com/api/send-email", {
-        email,
-        message,
-      });
+      await axios.post(
+        `${apiBaseUrl}/api/send-email`,
+        { email, message },
+        { timeout: 10000 }
+      );
       toast.success("Message sent successfully!");
       setEmail("");
       setMessage("");
     } catch (error) {
       console.error(error);
-      toast.error("Failed to send message. Please try again.");
+      const errorMessage =
+        error?.response?.data?.error ||
+        error?.message ||
+        "Failed to send message. Please try again.";
+      toast.error(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
@@ -158,7 +165,10 @@ export const ContactSection = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={cn("cosmic-button w-full flex items-center justify-center gap-2")}
+                className={cn(
+                  "cosmic-button w-full flex items-center justify-center gap-2",
+                  isSubmitting && "opacity-70 cursor-not-allowed"
+                )}
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
                 <Send size={16} />

@@ -5,7 +5,16 @@ const cors = require('cors');
 dotenv.config();
 const app = express();
 
-app.use(cors());
+const allowedOrigins = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(",").map((origin) => origin.trim())
+  : "*";
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "OPTIONS"],
+  })
+);
 app.use(express.json());
 app.use('/api', emailRoutes);
 
