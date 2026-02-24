@@ -140,10 +140,11 @@ export const CosmicLoader = ({ duration = 2200 }) => {
     );
     group.add(sparks);
 
-    const clock = new THREE.Clock();
+    const timer = new THREE.Timer();
     let animationId = 0;
     const animate = () => {
-      const elapsed = clock.getElapsedTime();
+      timer.update();
+      const elapsed = timer.getElapsed();
       group.rotation.y = elapsed * 0.35;
       group.rotation.x = Math.sin(elapsed * 0.2) * 0.08;
       planet.rotation.y = elapsed * 0.8;
