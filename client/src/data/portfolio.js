@@ -1,12 +1,12 @@
 export const cards = [
   {
     title: "B.Tech CSE (AI & ML)",
-    body: "UEM Kolkata (2024-2028). Focused on ML, DSA, DBMS, and full-stack development.",
+    body: "IEM Newtown (2024-2028). Focused on ML, DSA, DBMS, and full-stack development.",
     cta: "INSTITUTE",
     href: "https://iem.edu.in/", // Note: Using UEM link if applicable
     secondaryCta: "CURRICULUM",
     secondaryHref: "https://iem.edu.in/iem-college-engineering-technology/",
-    image: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=500&q=80",
+    image: "./clg.jpg",
   },
   {
     title: "Student Result Predictor",
