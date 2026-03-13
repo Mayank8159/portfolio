@@ -12,19 +12,23 @@ export default function Navbar({ items }) {
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
-    
+
     const elements = items.map((item) => document.getElementById(item.id)).filter(Boolean);
-    
+
     const updateActiveSection = () => {
       const scrollPosition = window.scrollY + 120;
-      const currentSection = elements.find((element) => {
-        const { offsetTop, offsetHeight } = element;
-        return scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight;
+      let current = elements.find((el) => {
+        return scrollPosition >= el.offsetTop && scrollPosition < el.offsetTop + el.offsetHeight;
       });
 
-      if (currentSection && currentSection.id !== activeSectionRef.current) {
-        activeSectionRef.current = currentSection.id;
-        setActiveSection(currentSection.id);
+      // Snap to last section when user scrolls to the very bottom
+      if (!current && window.scrollY + window.innerHeight >= document.body.offsetHeight - 50) {
+        current = elements[elements.length - 1];
+      }
+
+      if (current && current.id !== activeSectionRef.current) {
+        activeSectionRef.current = current.id;
+        setActiveSection(current.id);
       }
     };
 
@@ -39,6 +43,18 @@ export default function Navbar({ items }) {
     };
   }, [items]);
 
+  // Close mobile menu on ESC key or viewport resize to desktop
+  useEffect(() => {
+    const handleKeyDown = (e) => { if (e.key === "Escape") setNavOpen(false); };
+    const handleResize = () => { if (window.innerWidth >= 1024) setNavOpen(false); };
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     document.body.style.overflow = navOpen ? "hidden" : "";
   }, [navOpen]);
@@ -49,13 +65,13 @@ export default function Navbar({ items }) {
         layout
         initial={false}
         animate={{
-          // On mobile (scrolled or not), we keep it wider to prevent disappearing
           width: scrolled ? "92%" : "100%",
           maxWidth: scrolled ? "1000px" : "1200px",
-          borderRadius: scrolled ? "50px" : "16px",
+          // Keep card shape (16px) while mobile menu is open so dropdown fits cleanly
+          borderRadius: scrolled && !navOpen ? "50px" : "16px",
         }}
         transition={{ type: "spring", stiffness: 200, damping: 30 }}
-        className={`pointer-events-auto relative flex flex-col border border-white/10 backdrop-blur-xl shadow-2xl transition-colors duration-500 ${
+        className={`pointer-events-auto relative flex flex-col border border-white/10 backdrop-blur-xl shadow-2xl transition-colors duration-500 overflow-hidden ${
           scrolled ? "bg-[#0a0a0c]/90" : "bg-[#0a0a0c]/40"
         }`}
       >
@@ -104,6 +120,8 @@ export default function Navbar({ items }) {
             </button>
             
             <button
+              aria-label={navOpen ? "Close menu" : "Open menu"}
+              aria-expanded={navOpen}
               className="flex h-9 w-9 items-center justify-center rounded-full text-white lg:hidden bg-white/5 border border-white/10 active:bg-white/10"
               onClick={() => setNavOpen(!navOpen)}
             >

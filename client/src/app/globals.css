@@ -3,6 +3,7 @@
 @theme inline {
   --font-sans: var(--font-poppins);
   --font-display: var(--font-preahvihear);
+  --breakpoint-xs: 480px;
 }
 
 html {
