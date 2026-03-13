@@ -6,7 +6,7 @@ export const cards = [
     href: "https://iem.edu.in/", // Note: Using UEM link if applicable
     secondaryCta: "CURRICULUM",
     secondaryHref: "https://iem.edu.in/iem-college-engineering-technology/",
-    image: "./clg.jpg",
+    image: "https://qs-igauge.blr1.cdn.digitaloceanspaces.com/UEM-Kolkata-2-e1482310335445.jpg",
   },
   {
     title: "Student Result Predictor",
