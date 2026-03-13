@@ -29,10 +29,10 @@ export default function ProjectsSection({ cards }) {
               className="group relative overflow-hidden rounded-2xl border border-white/5 bg-[#0a0a0c] p-4 transition-all duration-300 hover:border-cyan-500/30 sm:p-6 lg:pl-[160px]"
             >
               {/* Subtle Background Glow on Hover */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_var(--x,_50%)_var(--y,_50%),rgba(6,182,212,0.05)_0%,transparent_100%)] opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_var(--x,_50%)_var(--y,_50%),rgba(6,182,212,0.05)_0%,transparent_100%)] opacity-0 transition-opacity group-hover:opacity-100" />
 
               {/* Card Image */}
-              <div className="relative mb-5 h-[150px] w-full overflow-hidden rounded-xl border border-white/10 sm:h-[170px] lg:absolute lg:left-6 lg:top-6 lg:mb-0 lg:h-[110px] lg:w-[110px]">
+              <div className="relative z-10 mb-5 h-[150px] w-full overflow-hidden rounded-xl border border-white/10 sm:h-[170px] lg:absolute lg:left-6 lg:top-6 lg:mb-0 lg:h-[110px] lg:w-[110px]">
                 <Image
                   src={card.image}
                   alt={card.title}
@@ -42,7 +42,7 @@ export default function ProjectsSection({ cards }) {
               </div>
 
               {/* Category Tag */}
-              <span className={`mb-4 inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-widest ${
+              <span className={`relative z-10 mb-4 inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-widest ${
                 isEducation 
                   ? "border-cyan-500/30 bg-cyan-500/10 text-cyan-400" 
                   : "border-fuchsia-500/30 bg-fuchsia-500/10 text-fuchsia-400"
@@ -59,12 +59,12 @@ export default function ProjectsSection({ cards }) {
                 {card.title}
               </h4>
 
-              <p className="mt-3 text-sm leading-relaxed text-gray-400 transition-colors group-hover:text-gray-300 sm:text-[15px]">
+              <p className="relative z-10 mt-3 text-sm leading-relaxed text-gray-400 transition-colors group-hover:text-gray-300 sm:text-[15px]">
                 {card.body}
               </p>
 
               {/* Actions */}
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="relative z-10 mt-6 flex flex-wrap gap-3">
                 <a
                   className="inline-flex items-center gap-2 rounded-md bg-white/5 border border-white/10 px-4 py-2 text-[11px] font-mono font-bold text-white transition-all hover:bg-cyan-500 hover:text-black hover:border-cyan-500"
                   href={card.href}
@@ -85,7 +85,7 @@ export default function ProjectsSection({ cards }) {
               </div>
 
               {/* Corner Accent (Cyberpunk Touch) */}
-              <div className="absolute bottom-0 right-0 h-8 w-8 opacity-20 group-hover:opacity-100 transition-opacity">
+                <div className="pointer-events-none absolute bottom-0 right-0 h-8 w-8 opacity-20 transition-opacity group-hover:opacity-100">
                  <div className="absolute bottom-2 right-2 h-2 w-2 bg-cyan-500" />
               </div>
             </motion.article>
