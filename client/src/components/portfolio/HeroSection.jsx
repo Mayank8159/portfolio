@@ -38,7 +38,7 @@ export default function HeroSection({ facts }) {
         </motion.div>
 
         <h1 className="mt-6 text-3xl font-black leading-[1.1] tracking-tighter italic text-white sm:text-5xl lg:text-7xl" style={{ fontFamily: "var(--font-preahvihear)" }}>
-          BUILDS WITH <span className="text-cyan-400">AI</span> AND CODE<span className="text-cyan-400 animate-pulse">_</span>
+          CRAFTING <span className="text-cyan-400">INTELLIGENT</span> PRODUCTS<span className="text-cyan-400 animate-pulse">_</span>
         </h1>
 
         <p className="mt-5 max-w-2xl text-sm font-medium leading-relaxed text-gray-400 max-md:mx-auto sm:text-base lg:text-lg">
