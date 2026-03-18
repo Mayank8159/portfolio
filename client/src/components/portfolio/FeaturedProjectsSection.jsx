@@ -1,26 +1,28 @@
 "use client";
 
 import Image from "next/image";
-import { Terminal, Cpu, ExternalLink } from "lucide-react";
+import { Cpu, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 
 const featuredData = [
   {
     eyebrow: "Featured_Project",
-    title: "AI Study Planner",
+    title: "Avaani AI",
     description:
-      "A student productivity platform that uses ML to suggest daily study plans based on syllabus load, deadlines, and performance history. Includes task prioritization, streak tracking, and revision reminders.",
-    image: "https://images.unsplash.com/photo-1738641928061-e68c5e8e2f2b?auto=format&fit=crop&q=80&w=900",
-    tags: ["Python", "TensorFlow", "Next.js"],
+      "An AI Waifu/personal assistant, built with Next.js and a TTS and STT model used to make her ear and mouth, GrokAI API for her Brain.",
+    image: "/avaani.png",
+    moduleHref: "https://github.com/Mayank8159/AvaaniAI",
+    tags: ["Python", "Three.js", "Next.js"],
     isReversed: false,
   },
   {
     eyebrow: "System_Core",
-    title: "Personal Portfolio",
+    title: "Monastery 360 Viewer",
     description:
-      "A high-performance portfolio showcasing my AI/ML journey. Features a custom Intersection Observer for navigation, Framer Motion for hardware-accelerated animations, and a glassmorphic Cyberpunk UI.",
-    image: "https://images.unsplash.com/photo-1757476623157-cb993ae14a77?auto=format&fit=crop&q=80&w=900",
-    tags: ["Next.js", "Tailwind", "Framer Motion"],
+      "An immersive 360-degree viewer for exploring monastery interiors and artifacts.",
+    image: "/mon.png",
+    moduleHref: "https://github.com/Mayank8159/Monastery360plus",
+    tags: ["Next.js", "Tailwind", "Three.js"],
     isReversed: true,
   },
 ];
@@ -41,7 +43,9 @@ export default function FeaturedProjectsSection() {
   );
 }
 
-function FeaturedCard({ eyebrow, title, description, image, tags, isReversed }) {
+function FeaturedCard({ eyebrow, title, description, image, moduleHref, tags, isReversed }) {
+  const moduleLink = moduleHref || image;
+
   return (
     <div className={`grid gap-8 lg:grid-cols-12 lg:items-center`}>
       {/* Image Container */}
@@ -94,9 +98,14 @@ function FeaturedCard({ eyebrow, title, description, image, tags, isReversed }) 
           </ul>
 
           <div className={`mt-8 flex gap-4 ${isReversed ? "justify-end" : ""}`}>
-            <button className="flex items-center gap-2 rounded-lg bg-white/5 border border-white/10 px-4 py-2 text-xs font-bold text-white transition-all hover:bg-white hover:text-black">
+            <a
+              href={moduleLink}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 rounded-lg bg-white/5 border border-white/10 px-4 py-2 text-xs font-bold text-white transition-all hover:bg-white hover:text-black"
+            >
               <ExternalLink size={14} /> VIEW_MODULE
-            </button>
+            </a>
           </div>
         </div>
       </div>

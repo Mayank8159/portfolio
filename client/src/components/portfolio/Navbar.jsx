@@ -114,10 +114,14 @@ export default function Navbar({ items }) {
 
           {/* Right Actions */}
           <div className="flex items-center gap-2">
-            <button className="hidden xs:flex items-center gap-2 bg-white text-black px-4 py-1.5 rounded-full text-[10px] font-black hover:bg-cyan-400 transition-all active:scale-95">
+            <a
+              href="/MayankCV.pdf"
+              download="MayankCV.pdf"
+              className="hidden xs:flex items-center gap-2 bg-white text-black px-4 py-1.5 rounded-full text-[10px] font-black hover:bg-cyan-400 transition-all active:scale-95"
+            >
               <Terminal size={12} />
               <span className="hidden sm:inline">RESUME.EXE</span>
-            </button>
+            </a>
             
             <button
               aria-label={navOpen ? "Close menu" : "Open menu"}
@@ -155,10 +159,15 @@ export default function Navbar({ items }) {
                     <span className="opacity-20 text-[9px]">0{index + 1}</span>
                   </a>
                 ))}
-                <button className="mt-4 flex xs:hidden items-center justify-center gap-2 bg-cyan-500 text-black py-4 rounded-xl text-xs font-black">
+                <a
+                  href="/MayankCV.pdf"
+                  download="MayankCV.pdf"
+                  onClick={() => setNavOpen(false)}
+                  className="mt-4 flex xs:hidden items-center justify-center gap-2 bg-cyan-500 text-black py-4 rounded-xl text-xs font-black"
+                >
                   <Terminal size={14} />
                   RESUME.EXE
-                </button>
+                </a>
               </div>
             </motion.div>
           )}
