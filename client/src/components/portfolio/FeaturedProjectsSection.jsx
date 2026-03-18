@@ -9,7 +9,7 @@ const featuredData = [
     eyebrow: "Featured_Project",
     title: "Avaani AI",
     description:
-      "An AI Waifu/personal assistant, built with Next.js and a TTS and STT model used to make her ear and mouth, GrokAI API for her Brain.",
+      "A voice-first AI companion engineered with Next.js, real-time speech-to-text and text-to-speech pipelines, and Grok AI integration. It delivers natural, responsive conversations through a character-driven interface that feels personal and alive.",
     image: "/avaani.png",
     moduleHref: "https://github.com/Mayank8159/AvaaniAI",
     tags: ["Python", "Three.js", "Next.js"],
@@ -19,7 +19,7 @@ const featuredData = [
     eyebrow: "System_Core",
     title: "Monastery 360 Viewer",
     description:
-      "An immersive 360-degree viewer for exploring monastery interiors and artifacts.",
+      "An interactive 360° exploration platform for monastery spaces and artifacts, designed for smooth panoramic navigation, contextual storytelling, and a museum-like digital experience across devices.",
     image: "/mon.png",
     moduleHref: "https://github.com/Mayank8159/Monastery360plus",
     tags: ["Next.js", "Tailwind", "Three.js"],
