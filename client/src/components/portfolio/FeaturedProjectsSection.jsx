@@ -12,7 +12,7 @@ const featuredData = [
       "A voice-first AI companion engineered with Next.js, real-time speech-to-text and text-to-speech pipelines, and Grok AI integration. It delivers natural, responsive conversations through a character-driven interface that feels personal and alive.",
     image: "/avaani.png",
     moduleHref: "https://github.com/Mayank8159/AvaaniAI",
-    tags: ["Python", "Three.js", "Next.js"],
+    tags: ["Python", "Three.js", "Next.js", "VRM", "Grok AI"],
     isReversed: false,
   },
   {
