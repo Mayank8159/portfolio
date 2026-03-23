@@ -25,6 +25,16 @@ const featuredData = [
     tags: ["Next.js", "Tailwind", "Three.js"],
     isReversed: true,
   },
+  {
+    eyebrow: "Featured_Project",
+    title: "Plant Disease Detector",
+    description:
+      "An AI-powered application for identifying plant diseases through image analysis, built with Python and machine learning algorithms.",
+    image: "/plant.png",
+    moduleHref: "https://github.com/Mayank8159/plant-disease-detector",
+    tags: ["Next.js", "Tailwind", "tflite", "Python"],
+    isReversed: false,
+  },
 ];
 
 export default function FeaturedProjectsSection() {
