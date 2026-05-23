@@ -54,7 +54,7 @@ export const skillLogos = [
   { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
   { name: "Linux", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" },
   { name: "MLOps", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuredevops/azuredevops-original.svg" },
-  { name: "AWS", logo: "https://raw.githubusercontent.com/devicons/devicon/v2.17.0/icons/aws/aws-original.svg" }
+  { name: "AWS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" }
 ];
 
 // CRITICAL FIX: Icons as strings
