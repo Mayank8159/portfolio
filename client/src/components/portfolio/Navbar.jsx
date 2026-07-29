@@ -16,13 +16,14 @@ export default function Navbar({ items }) {
     const elements = items.map((item) => document.getElementById(item.id)).filter(Boolean);
 
     const updateActiveSection = () => {
-      const offset = 120;
-      let current = elements.find((el) => {
+      const offset = 140;
+      let current = elements[0];
+      for (const el of elements) {
         const rect = el.getBoundingClientRect();
-        return rect.top <= offset && rect.bottom > offset;
-      });
+        if (rect.top <= offset) current = el;
+      }
 
-      if (!current && window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
+      if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
         current = elements[elements.length - 1];
       }
 
