@@ -16,13 +16,13 @@ export default function Navbar({ items }) {
     const elements = items.map((item) => document.getElementById(item.id)).filter(Boolean);
 
     const updateActiveSection = () => {
-      const scrollPosition = window.scrollY + 120;
+      const offset = 120;
       let current = elements.find((el) => {
-        return scrollPosition >= el.offsetTop && scrollPosition < el.offsetTop + el.offsetHeight;
+        const rect = el.getBoundingClientRect();
+        return rect.top <= offset && rect.bottom > offset;
       });
 
-      // Snap to last section when user scrolls to the very bottom
-      if (!current && window.scrollY + window.innerHeight >= document.body.offsetHeight - 50) {
+      if (!current && window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
         current = elements[elements.length - 1];
       }
 
