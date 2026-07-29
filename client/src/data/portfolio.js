@@ -64,9 +64,21 @@ export const quickFacts = [
   { icon: "Database", label: "Data + Backend" },
 ];
 
+export const researchPapers = [
+  {
+    title: "Enhancing LLM Performance: A Hybrid Approach to Fine-Tuning and Prompt Engineering",
+    authors: "Mayank Kumar Sharma",
+    abstract: "This paper explores a hybrid methodology combining fine-tuning and advanced prompt engineering techniques to improve large language model performance on domain-specific tasks. Results demonstrate significant accuracy gains over baseline approaches.",
+    file: "/papers/paperLLM.docx",
+    tags: ["LLM", "Fine-Tuning", "Prompt Engineering", "NLP"],
+    year: "2025",
+  },
+];
+
 export const navItems = [
   { id: "home", label: "Home" },
   { id: "education", label: "Education" },
   { id: "skills", label: "Skills" },
+  { id: "papers", label: "Papers" },
   { id: "contact", label: "Contact" },
 ];

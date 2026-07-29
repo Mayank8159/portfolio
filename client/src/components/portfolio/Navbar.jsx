@@ -71,7 +71,9 @@ export default function Navbar({ items }) {
           borderRadius: scrolled && !navOpen ? "50px" : "16px",
         }}
         transition={{ type: "spring", stiffness: 200, damping: 30 }}
-        className={`pointer-events-auto relative flex flex-col border border-white/10 backdrop-blur-xl shadow-2xl transition-colors duration-500 overflow-hidden ${
+        className={`pointer-events-auto relative flex flex-col border border-white/10 backdrop-blur-xl shadow-2xl transition-colors duration-500 ${
+          navOpen ? "" : "overflow-hidden"
+        } ${
           scrolled ? "bg-[#0a0a0c]/90" : "bg-[#0a0a0c]/40"
         }`}
       >

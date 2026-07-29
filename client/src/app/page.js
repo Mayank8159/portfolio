@@ -4,7 +4,8 @@ import ProjectsSection from "@/components/portfolio/ProjectsSection";
 import SkillsSection from "@/components/portfolio/SkillsSection";
 import ContactSection from "@/components/portfolio/ContactSection";
 import FeaturedProjectsSection from "@/components/portfolio/FeaturedProjectsSection";
-import { cards, navItems, quickFacts, skillLogos } from "@/data/portfolio";
+import ResearchPapersSection from "@/components/portfolio/ResearchPapersSection";
+import { cards, navItems, quickFacts, skillLogos, researchPapers } from "@/data/portfolio";
 
 export default function Home() {
   return (
@@ -16,6 +17,8 @@ export default function Home() {
       <ProjectsSection cards={cards} />
 
       <SkillsSection skills={skillLogos} />
+
+      <ResearchPapersSection papers={researchPapers} />
 
       <FeaturedProjectsSection />
 
