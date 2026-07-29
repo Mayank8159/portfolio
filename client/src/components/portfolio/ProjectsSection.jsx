@@ -26,10 +26,12 @@ export default function ProjectsSection({ cards }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl border border-white/5 bg-[#0a0a0c] p-4 transition-all duration-300 hover:border-cyan-500/30 sm:p-6 lg:pl-[160px]"
+              className="group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-br from-[#18181b] to-[#1f1f23] p-4 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-cyan-500/30 sm:p-6 lg:pl-[160px]"
             >
+              {/* Marble Sheen */}
+              <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(135deg,transparent_25%,rgba(255,255,255,0.015)_50%,transparent_75%)]" />
               {/* Subtle Background Glow on Hover */}
-              <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_var(--x,_50%)_var(--y,_50%),rgba(6,182,212,0.05)_0%,transparent_100%)] opacity-0 transition-opacity group-hover:opacity-100" />
+              <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_var(--x,_50%)_var(--y,_50%),rgba(6,182,212,0.08)_0%,transparent_100%)] opacity-0 transition-opacity group-hover:opacity-100" />
 
               {/* Card Image */}
               <div className="relative z-10 mb-5 h-[150px] w-full overflow-hidden rounded-xl border border-white/10 sm:h-[170px] lg:absolute lg:left-6 lg:top-6 lg:mb-0 lg:h-[110px] lg:w-[110px]">

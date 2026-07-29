@@ -62,7 +62,7 @@ function FeaturedCard({ eyebrow, title, description, image, moduleHref, tags, is
       <div className={`relative lg:col-span-7 ${isReversed ? "lg:order-last" : ""}`}>
         <motion.div 
           whileHover={{ scale: 1.02 }}
-          className="group relative aspect-video overflow-hidden rounded-xl border border-white/10 bg-[#0a0a0c]"
+          className="group relative aspect-video overflow-hidden rounded-xl border border-white/[0.06] bg-gradient-to-br from-[#18181b] to-[#1f1f23] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)]"
         >
           {/* Cyan Overlay on Hover */}
           <div className="absolute inset-0 z-10 bg-cyan-500/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -90,7 +90,9 @@ function FeaturedCard({ eyebrow, title, description, image, moduleHref, tags, is
             {title}
           </h3>
 
-          <div className="relative mt-6 w-full rounded-xl border border-white/10 bg-[#16161a]/80 p-6 backdrop-blur-md shadow-2xl transition-all hover:border-cyan-500/30">
+          <div className="relative mt-6 w-full rounded-xl border border-white/[0.06] bg-gradient-to-br from-[#18181b]/90 to-[#222226]/90 p-6 backdrop-blur-md shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)] transition-all hover:border-cyan-500/30">
+            {/* Marble Sheen */}
+            <div className="pointer-events-none absolute inset-0 rounded-xl bg-[linear-gradient(135deg,transparent_25%,rgba(255,255,255,0.015)_50%,transparent_75%)]" />
             {/* Corner Decorative Notch */}
             <div className="absolute -top-px -left-px h-4 w-4 border-l-2 border-t-2 border-cyan-500" />
             

@@ -31,7 +31,9 @@ export default function SkillsSection({ skills }) {
         description="Tools and technologies I rely on for machine learning workflows, backend logic, and modern web application interfaces."
       />
 
-      <div className="relative mt-12 rounded-2xl border border-white/5 bg-[#0a0a0c]/60 p-8 backdrop-blur-xl overflow-hidden">
+      <div className="relative mt-12 rounded-2xl border border-white/[0.06] bg-gradient-to-br from-[#18181b]/80 to-[#1f1f23]/80 p-8 backdrop-blur-xl shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)] overflow-hidden">
+        {/* Marble Sheen */}
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,transparent_25%,rgba(255,255,255,0.015)_50%,transparent_75%)]" />
         {/* Background Decorative Element */}
         <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-500/5 blur-[80px]" />
         
@@ -58,8 +60,10 @@ export default function SkillsSection({ skills }) {
                 borderColor: "rgba(34, 211, 238, 0.4)",
                 backgroundColor: "rgba(34, 211, 238, 0.05)"
               }}
-              className="relative flex flex-col items-center justify-center gap-3 rounded-xl border border-white/5 bg-white/5 px-2 py-5 text-center transition-all duration-300 group"
+              className="relative flex flex-col items-center justify-center gap-3 rounded-xl border border-white/[0.06] bg-gradient-to-br from-[#18181b] to-[#222226] px-2 py-5 text-center shadow-[0_4px_16px_-4px_rgba(0,0,0,0.4)] transition-all duration-300 group"
             >
+              {/* Marble Sheen */}
+              <div className="pointer-events-none absolute inset-0 rounded-xl bg-[linear-gradient(135deg,transparent_25%,rgba(255,255,255,0.015)_50%,transparent_75%)]" />
               {/* Subtle Glow on Hover */}
               <div className="absolute inset-0 rounded-xl bg-cyan-400/0 blur-xl transition-all group-hover:bg-cyan-400/10" />
 

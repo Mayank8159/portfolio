@@ -37,7 +37,9 @@ export default function ContactSection() {
         title="Establish Connection" 
       />
 
-      <div className="relative overflow-hidden rounded-2xl border border-white/5 bg-[#0a0a0c]/60 p-5 backdrop-blur-xl sm:p-8 lg:p-10">
+      <div className="relative overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-br from-[#18181b]/80 to-[#1f1f23]/80 p-5 backdrop-blur-xl shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)] sm:p-8 lg:p-10">
+        {/* Marble Sheen */}
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,transparent_25%,rgba(255,255,255,0.015)_50%,transparent_75%)]" />
         {/* Background Decorative Grid */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:24px_24px]" />
         
@@ -67,7 +69,7 @@ export default function ContactSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="group relative flex items-center gap-3 rounded-xl border border-white/5 bg-white/5 p-3 transition-all hover:border-cyan-500/40 hover:bg-cyan-500/5 sm:gap-4 sm:p-4"
+                  className="group relative flex items-center gap-3 rounded-xl border border-white/[0.06] bg-gradient-to-br from-[#18181b] to-[#222226] p-3 shadow-[0_4px_16px_-4px_rgba(0,0,0,0.4)] transition-all hover:border-cyan-500/40 hover:bg-cyan-500/5 sm:gap-4 sm:p-4"
                 >
                   <div className={`flex h-10 w-10 flex-none items-center justify-center rounded-lg bg-white/5 transition-colors group-hover:bg-cyan-500/20 sm:h-12 sm:w-12 ${contact.color}`}>
                     <Icon size={20} />
