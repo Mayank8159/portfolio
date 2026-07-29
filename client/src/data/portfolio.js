@@ -75,10 +75,34 @@ export const researchPapers = [
   },
 ];
 
+export const hobbies = [
+  {
+    name: "Singing",
+    description: "Expressing through melodies — from classical to contemporary.",
+    image: "https://images.unsplash.com/photo-1516280440614-37939bbacd81?w=600&q=80",
+  },
+  {
+    name: "Camping",
+    description: "Exploring the wild, one campsite at a time.",
+    image: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=600&q=80",
+  },
+  {
+    name: "Travelling",
+    description: "Chasing new horizons and collecting stories.",
+    image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80",
+  },
+  {
+    name: "Research",
+    description: "Diving deep into AI/ML to push the boundaries of knowledge.",
+    image: "https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=600&q=80",
+  },
+];
+
 export const navItems = [
   { id: "home", label: "Home" },
   { id: "education", label: "Education" },
   { id: "skills", label: "Skills" },
   { id: "papers", label: "Papers" },
+  { id: "hobbies", label: "Hobbies" },
   { id: "contact", label: "Contact" },
 ];
