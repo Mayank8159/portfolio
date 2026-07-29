@@ -64,6 +64,7 @@ function FeaturedCard({ eyebrow, title, description, image, moduleHref, tags, is
           whileHover={{ scale: 1.02 }}
           className="group relative aspect-video overflow-hidden rounded-xl border border-white/[0.06] bg-gradient-to-br from-[#18181b] to-[#1f1f23] shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)]"
         >
+          <div className="pointer-events-none absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-cyan-500 to-fuchsia-500 opacity-25" />
           {/* Cyan Overlay on Hover */}
           <div className="absolute inset-0 z-10 bg-cyan-500/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           
@@ -91,6 +92,8 @@ function FeaturedCard({ eyebrow, title, description, image, moduleHref, tags, is
           </h3>
 
           <div className="relative mt-6 w-full rounded-xl border border-white/[0.06] bg-gradient-to-br from-[#18181b]/90 to-[#222226]/90 p-6 backdrop-blur-md shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)] transition-all hover:border-cyan-500/30">
+            {/* Gradient Accent */}
+            <div className="pointer-events-none absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-cyan-500 to-fuchsia-500 opacity-30 rounded-l-xl" />
             {/* Marble Sheen */}
             <div className="pointer-events-none absolute inset-0 rounded-xl bg-[linear-gradient(135deg,transparent_25%,rgba(255,255,255,0.015)_50%,transparent_75%)]" />
             {/* Corner Decorative Notch */}

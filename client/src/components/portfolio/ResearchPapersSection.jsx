@@ -24,6 +24,7 @@ export default function ResearchPapersSection({ papers }) {
             transition={{ delay: index * 0.1 }}
             className="group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-br from-[#18181b] to-[#1f1f23] p-5 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-cyan-500/30 sm:p-6"
           >
+            <div className="pointer-events-none absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-cyan-500 to-fuchsia-500 opacity-30" />
             <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(135deg,transparent_25%,rgba(255,255,255,0.015)_50%,transparent_75%)]" />
             <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_var(--x,_50%)_var(--y,_50%),rgba(6,182,212,0.08)_0%,transparent_100%)] opacity-0 transition-opacity group-hover:opacity-100" />
 

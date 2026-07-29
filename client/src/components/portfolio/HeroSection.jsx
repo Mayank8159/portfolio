@@ -20,6 +20,7 @@ export default function HeroSection({ facts }) {
       <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} className="relative mx-auto">
         <div className="absolute -inset-4 rounded-full border border-cyan-500/20 animate-[spin_10s_linear_infinite]" />
         <div className="relative h-[220px] w-[220px] rounded-full border border-white/[0.06] bg-gradient-to-br from-[#18181b] to-[#1f1f23] p-2 shadow-[0_0_50px_rgba(6,182,212,0.1)] sm:h-[260px] sm:w-[260px] lg:h-[280px] lg:w-[280px]">
+          <div className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-br from-cyan-500/10 via-transparent to-fuchsia-500/10" />
           <Image className="h-full w-full rounded-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700" 
                  src="/profilePic.jpeg" alt="Mayank Sharma" width={280} height={280} priority />
         </div>
@@ -56,8 +57,9 @@ export default function HeroSection({ facts }) {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 + index * 0.1 }}
-                className="group inline-flex items-center gap-2.5 rounded-lg border border-white/[0.06] bg-gradient-to-br from-[#18181b] to-[#222226] px-4 py-2.5 text-[11px] font-mono font-medium text-gray-300 shadow-[0_4px_16px_-4px_rgba(0,0,0,0.4)] transition-all hover:border-cyan-500/30 hover:bg-cyan-500/5 hover:text-white sm:px-5 sm:py-3 sm:text-xs"
-              >
+                className="group relative inline-flex items-center gap-2.5 rounded-lg border border-white/[0.06] bg-gradient-to-br from-[#18181b] to-[#222226] px-4 py-2.5 text-[11px] font-mono font-medium text-gray-300 shadow-[0_4px_16px_-4px_rgba(0,0,0,0.4)] transition-all hover:border-cyan-500/30 hover:bg-cyan-500/5 hover:text-white sm:px-5 sm:py-3 sm:text-xs"
+                >
+                  <div className="pointer-events-none absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-cyan-500 to-fuchsia-500 opacity-20 rounded-l-lg" />
                 <Icon size={16} className="text-cyan-500 group-hover:scale-110 transition-transform" />
                 <span>{fact.label}</span>
               </motion.div>

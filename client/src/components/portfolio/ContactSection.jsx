@@ -38,6 +38,8 @@ export default function ContactSection() {
       />
 
       <div className="relative overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-br from-[#18181b]/80 to-[#1f1f23]/80 p-5 backdrop-blur-xl shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)] sm:p-8 lg:p-10">
+        {/* Gradient Accent */}
+        <div className="pointer-events-none absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-cyan-500 to-fuchsia-500 opacity-30" />
         {/* Marble Sheen */}
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,transparent_25%,rgba(255,255,255,0.015)_50%,transparent_75%)]" />
         {/* Background Decorative Grid */}
@@ -71,6 +73,7 @@ export default function ContactSection() {
                   transition={{ delay: index * 0.1 }}
                   className="group relative flex items-center gap-3 rounded-xl border border-white/[0.06] bg-gradient-to-br from-[#18181b] to-[#222226] p-3 shadow-[0_4px_16px_-4px_rgba(0,0,0,0.4)] transition-all hover:border-cyan-500/40 hover:bg-cyan-500/5 sm:gap-4 sm:p-4"
                 >
+                  <div className="pointer-events-none absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-cyan-500 to-fuchsia-500 opacity-20 rounded-l-xl" />
                   <div className={`flex h-10 w-10 flex-none items-center justify-center rounded-lg bg-white/5 transition-colors group-hover:bg-cyan-500/20 sm:h-12 sm:w-12 ${contact.color}`}>
                     <Icon size={20} />
                   </div>

@@ -32,6 +32,8 @@ export default function SkillsSection({ skills }) {
       />
 
       <div className="relative mt-12 rounded-2xl border border-white/[0.06] bg-gradient-to-br from-[#18181b]/80 to-[#1f1f23]/80 p-8 backdrop-blur-xl shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)] overflow-hidden">
+        {/* Gradient Accent */}
+        <div className="pointer-events-none absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-cyan-500 to-fuchsia-500 opacity-30" />
         {/* Marble Sheen */}
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,transparent_25%,rgba(255,255,255,0.015)_50%,transparent_75%)]" />
         {/* Background Decorative Element */}
@@ -62,6 +64,8 @@ export default function SkillsSection({ skills }) {
               }}
               className="relative flex flex-col items-center justify-center gap-3 rounded-xl border border-white/[0.06] bg-gradient-to-br from-[#18181b] to-[#222226] px-2 py-5 text-center shadow-[0_4px_16px_-4px_rgba(0,0,0,0.4)] transition-all duration-300 group"
             >
+              {/* Gradient Accent */}
+              <div className="pointer-events-none absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-cyan-500 to-fuchsia-500 opacity-20 rounded-l-xl" />
               {/* Marble Sheen */}
               <div className="pointer-events-none absolute inset-0 rounded-xl bg-[linear-gradient(135deg,transparent_25%,rgba(255,255,255,0.015)_50%,transparent_75%)]" />
               {/* Subtle Glow on Hover */}
