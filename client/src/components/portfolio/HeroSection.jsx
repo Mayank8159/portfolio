@@ -43,7 +43,7 @@ export default function HeroSection({ facts }) {
         </h1>
 
         <p className="mt-5 max-w-2xl text-sm font-medium leading-relaxed text-gray-400 max-md:mx-auto sm:text-base lg:text-lg">
-          2nd Year CSE Student specializing in AI & ML. Lead at Google Gemini Student Community. 
+          3rd Year CSE Student specializing in AI & ML. Lead at Google Gemini Student Community. 
           Currently focused on building predictive dashboards and full-stack AI integrations.
         </p>
 
