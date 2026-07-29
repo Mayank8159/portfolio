@@ -22,7 +22,7 @@ export default function ResearchPapersSection({ papers }) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
-            className="group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-br from-[#18181b] to-[#1f1f23] p-5 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-cyan-500/30 sm:p-6"
+            className="group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-br from-[#18181b] to-[#1f1f23] p-5 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-cyan-500/30 sm:p-6 text-center"
           >
             <div className="pointer-events-none absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-cyan-500 to-fuchsia-500 opacity-30" />
             <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(135deg,transparent_25%,rgba(255,255,255,0.015)_50%,transparent_75%)]" />
@@ -48,7 +48,7 @@ export default function ResearchPapersSection({ papers }) {
               {paper.abstract}
             </p>
 
-            <div className="relative z-10 mt-4 flex flex-wrap gap-2">
+            <div className="relative z-10 mt-4 flex flex-wrap gap-2 justify-center">
               {paper.tags.map((tag) => (
                 <span
                   key={tag}
@@ -59,7 +59,7 @@ export default function ResearchPapersSection({ papers }) {
               ))}
             </div>
 
-            <div className="relative z-10 mt-5 flex flex-wrap gap-3">
+            <div className="relative z-10 mt-5 flex flex-wrap gap-3 justify-center">
               <a
                 className="inline-flex items-center gap-2 rounded-md bg-white/5 border border-white/10 px-4 py-2 text-[11px] font-mono font-bold text-white transition-all hover:bg-cyan-500 hover:text-black hover:border-cyan-500"
                 href={paper.file}
