@@ -66,11 +66,11 @@ export const quickFacts = [
 
 export const researchPapers = [
   {
-    title: "Enhancing LLM Performance: A Hybrid Approach to Fine-Tuning and Prompt Engineering",
-    authors: "Mayank Kumar Sharma",
-    abstract: "This paper explores a hybrid methodology combining fine-tuning and advanced prompt engineering techniques to improve large language model performance on domain-specific tasks. Results demonstrate significant accuracy gains over baseline approaches.",
+    title: "From Rules to Residues: Demystifying Large Language Models via Ground-Up Structural Implementation",
+    authors: "Mayank Kumar Sharma, IEM Newtown",
+    abstract: "Modern natural language processing is dominated by Large Language Models (LLMs) centered on the Transformer architecture. This paper systematically reduces the LLM pipeline to its baseline deterministic components: tokenization via Byte Pair Encoding (BPE), distributional semantic vector generation, and matrix-multiplication-driven self-attention. By contextualizing a 52,000-parameter toy model built completely from scratch against 80 years of computational history, we evaluate the paradigm shift from handwritten, rule-based heuristics to statistical next-token auto-regressive generation. Finally, we discuss how fine-tuning frameworks like Reinforcement Learning from Human Feedback (RLHF) and external tool-calling execution environments shape a statistical autocomplete model into an apparent conversational agent.",
     file: "/papers/paperLLM.docx",
-    tags: ["LLM", "Fine-Tuning", "Prompt Engineering", "NLP"],
+    tags: ["LLM", "Transformer", "Self-Attention", "Tokenization", "BPE", "Auto-regressive Generation"],
     year: "2025",
   },
 ];
