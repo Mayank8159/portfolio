@@ -62,17 +62,15 @@ export default function Navbar({ items }) {
   return (
     <header className="fixed left-0 right-0 top-0 z-[100] flex justify-center p-2 sm:p-6 pointer-events-none">
       <motion.div
-        layout
         initial={false}
         animate={{
           width: scrolled ? "92%" : "100%",
           maxWidth: scrolled ? "1000px" : "1200px",
-          // Keep card shape (16px) while mobile menu is open so dropdown fits cleanly
           borderRadius: scrolled && !navOpen ? "50px" : "16px",
         }}
         transition={{ type: "spring", stiffness: 200, damping: 30 }}
         className={`pointer-events-auto relative flex flex-col border border-white/10 backdrop-blur-xl shadow-2xl transition-colors duration-500 ${
-          navOpen ? "" : "overflow-hidden"
+          navOpen ? "overflow-visible" : "overflow-hidden"
         } ${
           scrolled ? "bg-[#0a0a0c]/90" : "bg-[#0a0a0c]/40"
         }`}
@@ -128,7 +126,7 @@ export default function Navbar({ items }) {
             <button
               aria-label={navOpen ? "Close menu" : "Open menu"}
               aria-expanded={navOpen}
-              className="flex h-9 w-9 items-center justify-center rounded-full text-white lg:hidden bg-white/5 border border-white/10 active:bg-white/10"
+              className="flex h-9 w-9 items-center justify-center rounded-full text-white lg:hidden bg-white/5 border border-white/10 active:bg-white/10 touch-manipulation"
               onClick={() => setNavOpen(!navOpen)}
             >
               {navOpen ? <X size={18} /> : <Menu size={18} />}
@@ -140,9 +138,9 @@ export default function Navbar({ items }) {
         <AnimatePresence>
           {navOpen && (
             <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
               className="lg:hidden"
             >
               <div className="flex flex-col gap-1 p-4 pt-2 border-t border-white/5">
@@ -151,7 +149,7 @@ export default function Navbar({ items }) {
                     key={item.id}
                     href={`#${item.id}`}
                     onClick={() => setNavOpen(false)}
-                    className={`flex items-center justify-between px-5 py-4 rounded-xl text-[11px] font-mono font-bold uppercase tracking-widest ${
+                    className={`flex items-center justify-between px-5 py-4 rounded-xl text-[11px] font-mono font-bold uppercase tracking-widest touch-manipulation ${
                       activeSection === item.id 
                         ? "bg-cyan-500/10 text-cyan-400 border border-cyan-500/20" 
                         : "text-gray-400 hover:bg-white/5"
@@ -165,7 +163,7 @@ export default function Navbar({ items }) {
                   href="/MayankCV.pdf"
                   download="MayankCV.pdf"
                   onClick={() => setNavOpen(false)}
-                  className="mt-4 flex xs:hidden items-center justify-center gap-2 bg-cyan-500 text-black py-4 rounded-xl text-xs font-black"
+                  className="mt-4 flex xs:hidden items-center justify-center gap-2 bg-cyan-500 text-black py-4 rounded-xl text-xs font-black touch-manipulation"
                 >
                   <Terminal size={14} />
                   RESUME.EXE
