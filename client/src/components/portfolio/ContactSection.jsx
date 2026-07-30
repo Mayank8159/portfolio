@@ -93,7 +93,7 @@ export default function ContactSection() {
               </a>
             <button
               onClick={handleCopy}
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-medium text-slate-300 transition-all hover:border-purple-500/40 hover:bg-white/10 hover:text-white active:scale-[0.97] sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm font-medium text-slate-300 transition-all hover:border-purple-500/40 hover:bg-white/10 hover:text-white active:scale-[0.97] w-full xs:w-auto"
             >
               {copied ? (
                 <>
