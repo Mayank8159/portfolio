@@ -54,7 +54,7 @@ export default function HeroSection() {
         </div>
 
         <div className="flex flex-col items-center lg:items-start animate-fade-slide">
-          <h1 className="max-w-4xl text-4xl font-bold leading-[1.15] tracking-tight sm:text-5xl md:text-6xl">
+          <h1 className="max-w-4xl text-3xl font-bold leading-[1.15] tracking-tight sm:text-5xl md:text-6xl">
             <span className="text-white">{before}</span>
             <span className="bg-gradient-to-r from-white via-purple-300 to-purple-400 bg-clip-text text-transparent">
               {during}
@@ -66,7 +66,7 @@ export default function HeroSection() {
             </span>
           </h1>
 
-          <p className="mt-4 max-w-xl text-lg text-slate-400 sm:text-xl">
+          <p className="mt-4 max-w-xl text-base text-slate-400 sm:text-lg md:text-xl">
             CSE (AI & ML) student at UEM Kolkata. Building ML models and full-stack
             applications.
           </p>

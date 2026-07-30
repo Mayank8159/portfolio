@@ -61,8 +61,8 @@ export default function SkillsSection({ skills }) {
 
     const observer = new ResizeObserver((entries) => {
       const { width } = entries[0].contentRect;
-      const newRadius = Math.min(width * 0.38, 220);
-      setRadius(Math.max(newRadius, 100));
+      const newRadius = Math.min(width * 0.35, 220);
+      setRadius(Math.max(newRadius, 80));
     });
 
     observer.observe(el);
