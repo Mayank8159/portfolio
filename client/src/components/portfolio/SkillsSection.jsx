@@ -4,21 +4,13 @@ import Image from "next/image";
 import { useMotionValue, useTransform, animate, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-const DURATION = 35;
+const DURATION = 40;
 
-function OrbitingSkill({ angle, skill, offset, radiusX, radiusY }) {
+function WheelSkill({ angle, skill, offset, radius }) {
   const rad = (a) => ((a + offset) * Math.PI) / 180;
 
-  const x = useTransform(angle, (a) => Math.cos(rad(a)) * radiusX);
-  const y = useTransform(angle, (a) => Math.sin(rad(a)) * radiusY);
-  const depth = useTransform(angle, (a) => Math.sin(rad(a)));
-  const scale = useTransform(depth, (d) => 0.75 + 0.35 * ((d + 1) / 2));
-  const opacity = useTransform(depth, (d) => 0.2 + 0.8 * ((d + 1) / 2));
-  const zIndex = useTransform(depth, (d) => Math.round(d * 5) + 10);
-  const filter = useTransform(depth, (d) => {
-    const normalized = (d + 1) / 2;
-    return `blur(${(1 - normalized) * 2}px)`;
-  });
+  const x = useTransform(angle, (a) => Math.cos(rad(a)) * radius);
+  const y = useTransform(angle, (a) => Math.sin(rad(a)) * radius);
 
   return (
     <motion.div
@@ -28,15 +20,11 @@ function OrbitingSkill({ angle, skill, offset, radiusX, radiusY }) {
         top: "50%",
         x,
         y,
-        scale,
-        opacity,
-        zIndex,
-        filter,
       }}
     >
       <div
         style={{ transform: "translate(-50%, -50%)" }}
-        className="flex items-center gap-2 whitespace-nowrap rounded-full border border-white/10 bg-slate-950/70 px-3 py-1.5 backdrop-blur-md"
+        className="flex items-center gap-2 whitespace-nowrap rounded-full border border-white/10 bg-slate-950/80 px-3 py-1.5 backdrop-blur-md"
       >
         <div className="relative h-4 w-4 shrink-0">
           <Image
@@ -54,8 +42,7 @@ function OrbitingSkill({ angle, skill, offset, radiusX, radiusY }) {
 
 export default function SkillsSection({ skills }) {
   const containerRef = useRef(null);
-  const [radiusX, setRadiusX] = useState(300);
-  const [radiusY, setRadiusY] = useState(180);
+  const [radius, setRadius] = useState(220);
 
   const angle = useMotionValue(0);
 
@@ -74,38 +61,46 @@ export default function SkillsSection({ skills }) {
 
     const observer = new ResizeObserver((entries) => {
       const { width } = entries[0].contentRect;
-      const newRadiusX = Math.min(width * 0.4, 300);
-      const newRadiusY = Math.max(newRadiusX * 0.6, 80);
-      setRadiusX(newRadiusX);
-      setRadiusY(newRadiusY);
+      const newRadius = Math.min(width * 0.38, 220);
+      setRadius(Math.max(newRadius, 100));
     });
 
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
 
+  const diameter = radius * 2 + 80;
+
   return (
     <section id="skills" className="mt-16 scroll-mt-28 sm:mt-24">
       <div
         ref={containerRef}
-        className="relative flex items-center justify-center overflow-x-hidden"
-        style={{ height: radiusY * 2 + 160 }}
+        className="relative flex items-center justify-center"
+        style={{ height: diameter }}
       >
+        <div
+          className="absolute rounded-full border border-white/[0.04]"
+          style={{ width: radius * 2 + 60, height: radius * 2 + 60 }}
+        />
+        <div
+          className="absolute rounded-full border border-dashed border-white/[0.03]"
+          style={{ width: radius * 2 + 100, height: radius * 2 + 100 }}
+        />
+
         <div className="absolute z-10 flex flex-col items-center">
-          <div className="absolute -top-6 h-48 w-48 rounded-full bg-purple-600/20 blur-3xl" />
+          <div className="absolute -top-6 h-40 w-40 rounded-full bg-violet-500/15 blur-3xl" />
           <h2 className="relative bg-gradient-to-r from-violet-400 to-indigo-300 bg-clip-text text-3xl font-extrabold text-transparent sm:text-4xl md:text-5xl">
             Skills
           </h2>
         </div>
 
         {skills.map((skill, i) => (
-          <OrbitingSkill
+          <WheelSkill
             key={skill.name}
             angle={angle}
             skill={skill}
             offset={(i * 360) / skills.length}
-            radiusX={radiusX}
-            radiusY={radiusY}
+            radius={radius}
           />
         ))}
       </div>
