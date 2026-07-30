@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <>
       <BackgroundGlow />
-      <main className="relative mx-auto w-[min(720px,92vw)] pb-12 pt-12 sm:pb-16 sm:pt-16 lg:w-[min(720px,90vw)]">
+      <main className="relative mx-auto w-full max-w-[720px] px-4 sm:px-6 pb-12 pt-12 sm:pb-16 sm:pt-16">
         <Navbar items={navItems} />
 
       <HeroSection />

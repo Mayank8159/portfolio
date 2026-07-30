@@ -69,22 +69,22 @@ export default function SkillsSection({ skills }) {
     return () => observer.disconnect();
   }, []);
 
-  const diameter = radius * 2 + 80;
+  const containerSize = radius * 2 + 120;
 
   return (
     <section id="skills" className="mt-16 scroll-mt-28 sm:mt-24">
       <div
         ref={containerRef}
-        className="relative flex items-center justify-center"
-        style={{ height: diameter }}
+        className="relative flex items-center justify-center overflow-hidden"
+        style={{ height: containerSize }}
       >
         <div
           className="absolute rounded-full border border-white/[0.04]"
-          style={{ width: radius * 2 + 60, height: radius * 2 + 60 }}
+          style={{ width: radius * 2 + 20, height: radius * 2 + 20 }}
         />
         <div
           className="absolute rounded-full border border-dashed border-white/[0.03]"
-          style={{ width: radius * 2 + 100, height: radius * 2 + 100 }}
+          style={{ width: radius * 2 + 40, height: radius * 2 + 40 }}
         />
 
         <div className="absolute z-10 flex flex-col items-center">
