@@ -1,3 +1,4 @@
+import BackgroundGlow from "@/components/portfolio/BackgroundGlow";
 import Navbar from "@/components/portfolio/Navbar";
 import HeroSection from "@/components/portfolio/HeroSection";
 import ProjectsSection from "@/components/portfolio/ProjectsSection";
@@ -6,30 +7,29 @@ import ContactSection from "@/components/portfolio/ContactSection";
 import FeaturedProjectsSection from "@/components/portfolio/FeaturedProjectsSection";
 import ResearchPapersSection from "@/components/portfolio/ResearchPapersSection";
 import HobbiesSection from "@/components/portfolio/HobbiesSection";
-import { cards, navItems, quickFacts, skillLogos, researchPapers, hobbies } from "@/data/portfolio";
+import { cards, navItems, skillLogos, researchPapers, hobbies } from "@/data/portfolio";
 
 export default function Home() {
   return (
-    <main className="relative mx-auto w-[min(1280px,94vw)] pb-16 pt-20 sm:pb-20 sm:pt-28 lg:w-[min(1280px,92vw)] lg:pt-32">
-      <Navbar items={navItems} />
+    <>
+      <BackgroundGlow />
+      <main className="relative mx-auto w-[min(720px,92vw)] pb-12 pt-12 sm:pb-16 sm:pt-16 lg:w-[min(720px,90vw)]">
+        <Navbar items={navItems} />
 
-      <HeroSection facts={quickFacts} />
+      <HeroSection />
 
       <ProjectsSection cards={cards} />
 
       <SkillsSection skills={skillLogos} />
 
-      <ResearchPapersSection papers={researchPapers} />
-
       <FeaturedProjectsSection />
+
+      <ResearchPapersSection papers={researchPapers} />
 
       <HobbiesSection hobbies={hobbies} />
 
       <ContactSection />
-
-      <div className="fixed inset-0 -z-50 pointer-events-none bg-[#030014]">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_-20%,#3b1b6d,transparent_70%)] opacity-50" />
-      </div>
     </main>
+    </>
   );
 }

@@ -1,94 +1,113 @@
 "use client";
 
 import Image from "next/image";
-import { Code2, Terminal } from "lucide-react";
-import { motion } from "framer-motion";
-import SectionHeader from "./SectionHeader";
+import { useMotionValue, useTransform, animate, motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 
-export default function SkillsSection({ skills }) {
-  // Animation variants for the container and children
-  const container = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.05,
-      },
-    },
-  };
+const DURATION = 35;
 
-  const item = {
-    hidden: { opacity: 0, scale: 0.9 },
-    show: { opacity: 1, scale: 1 },
-  };
+function OrbitingSkill({ angle, skill, offset, radiusX, radiusY }) {
+  const rad = (a) => ((a + offset) * Math.PI) / 180;
+
+  const x = useTransform(angle, (a) => Math.cos(rad(a)) * radiusX);
+  const y = useTransform(angle, (a) => Math.sin(rad(a)) * radiusY);
+  const depth = useTransform(angle, (a) => Math.sin(rad(a)));
+  const scale = useTransform(depth, (d) => 0.75 + 0.35 * ((d + 1) / 2));
+  const opacity = useTransform(depth, (d) => 0.2 + 0.8 * ((d + 1) / 2));
+  const zIndex = useTransform(depth, (d) => Math.round(d * 5) + 10);
+  const filter = useTransform(depth, (d) => {
+    const normalized = (d + 1) / 2;
+    return `blur(${(1 - normalized) * 2}px)`;
+  });
 
   return (
-    <section id="skills" className="mt-28 scroll-mt-32">
-      <SectionHeader
-        icon={Code2}
-        eyebrow="SYSTEM_TECH_STACK"
-        title="Technical Arsenal"
-        description="Tools and technologies I rely on for machine learning workflows, backend logic, and modern web application interfaces."
-      />
+    <motion.div
+      style={{
+        position: "absolute",
+        left: "50%",
+        top: "50%",
+        x,
+        y,
+        scale,
+        opacity,
+        zIndex,
+        filter,
+      }}
+    >
+      <div
+        style={{ transform: "translate(-50%, -50%)" }}
+        className="flex items-center gap-2 whitespace-nowrap rounded-full border border-white/10 bg-slate-950/70 px-3 py-1.5 backdrop-blur-md"
+      >
+        <div className="relative h-4 w-4 shrink-0">
+          <Image
+            src={skill.logo}
+            alt={skill.name}
+            fill
+            className="object-contain"
+          />
+        </div>
+        <span className="text-xs text-white">{skill.name}</span>
+      </div>
+    </motion.div>
+  );
+}
 
-      <div className="relative mt-12 rounded-2xl border border-white/[0.06] bg-gradient-to-br from-[#18181b]/80 to-[#1f1f23]/80 p-8 backdrop-blur-xl shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)] overflow-hidden">
-        {/* Gradient Accent */}
-        <div className="pointer-events-none absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-cyan-500 to-fuchsia-500 opacity-30" />
-        {/* Marble Sheen */}
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,transparent_25%,rgba(255,255,255,0.015)_50%,transparent_75%)]" />
-        {/* Background Decorative Element */}
-        <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-500/5 blur-[80px]" />
-        
-        <div className="relative z-10 flex items-center gap-3 mb-8">
-          <Terminal size={20} className="text-cyan-400" />
-          <h3 className="text-lg font-mono font-bold text-white uppercase tracking-tighter sm:text-xl">
-            Core_Modules.load()
-          </h3>
+export default function SkillsSection({ skills }) {
+  const containerRef = useRef(null);
+  const [radiusX, setRadiusX] = useState(300);
+  const [radiusY, setRadiusY] = useState(180);
+
+  const angle = useMotionValue(0);
+
+  useEffect(() => {
+    const controls = animate(angle, 360, {
+      duration: DURATION,
+      ease: "linear",
+      repeat: Infinity,
+    });
+    return controls.stop;
+  }, []);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new ResizeObserver((entries) => {
+      const { width } = entries[0].contentRect;
+      const newRadiusX = Math.min(width * 0.4, 300);
+      const newRadiusY = Math.max(newRadiusX * 0.6, 80);
+      setRadiusX(newRadiusX);
+      setRadiusY(newRadiusY);
+    });
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section id="skills" className="mt-16 scroll-mt-28 sm:mt-24">
+      <div
+        ref={containerRef}
+        className="relative flex items-center justify-center overflow-x-hidden"
+        style={{ height: radiusY * 2 + 160 }}
+      >
+        <div className="absolute z-10 flex flex-col items-center">
+          <div className="absolute -top-6 h-48 w-48 rounded-full bg-purple-600/20 blur-3xl" />
+          <h2 className="relative bg-gradient-to-r from-violet-400 to-indigo-300 bg-clip-text text-3xl font-extrabold text-transparent sm:text-4xl md:text-5xl">
+            Skills
+          </h2>
         </div>
 
-        <motion.div 
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-7"
-        >
-          {skills.map((skill) => (
-            <motion.div
-              key={skill.name}
-              variants={item}
-              whileHover={{ 
-                y: -5,
-                borderColor: "rgba(34, 211, 238, 0.4)",
-                backgroundColor: "rgba(34, 211, 238, 0.05)"
-              }}
-              className="relative flex flex-col items-center justify-center gap-3 rounded-xl border border-white/[0.06] bg-gradient-to-br from-[#18181b] to-[#222226] px-2 py-5 text-center shadow-[0_4px_16px_-4px_rgba(0,0,0,0.4)] transition-all duration-300 group"
-            >
-              {/* Gradient Accent */}
-              <div className="pointer-events-none absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-cyan-500 to-fuchsia-500 opacity-20 rounded-l-xl" />
-              {/* Marble Sheen */}
-              <div className="pointer-events-none absolute inset-0 rounded-xl bg-[linear-gradient(135deg,transparent_25%,rgba(255,255,255,0.015)_50%,transparent_75%)]" />
-              {/* Subtle Glow on Hover */}
-              <div className="absolute inset-0 rounded-xl bg-cyan-400/0 blur-xl transition-all group-hover:bg-cyan-400/10" />
-
-              <div className="relative h-10 w-10 transition-transform duration-300 group-hover:scale-110">
-                <Image 
-                  src={skill.logo} 
-                  alt={skill.name} 
-                  fill 
-                  className="object-contain grayscale-[40%] group-hover:grayscale-0 transition-all"
-                />
-              </div>
-              
-              <span className="relative text-[11px] font-mono font-bold uppercase tracking-tighter text-gray-400 group-hover:text-white transition-colors">
-                {skill.name}
-              </span>
-
-              {/* Corner Accent */}
-              <div className="absolute top-0 right-0 h-2 w-2 border-t border-r border-white/10 transition-colors group-hover:border-cyan-500/50" />
-            </motion.div>
-          ))}
-        </motion.div>
+        {skills.map((skill, i) => (
+          <OrbitingSkill
+            key={skill.name}
+            angle={angle}
+            skill={skill}
+            offset={(i * 360) / skills.length}
+            radiusX={radiusX}
+            radiusY={radiusY}
+          />
+        ))}
       </div>
     </section>
   );

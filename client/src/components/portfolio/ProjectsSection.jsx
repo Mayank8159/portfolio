@@ -1,100 +1,102 @@
 "use client";
 
 import Image from "next/image";
-import { GraduationCap, ExternalLink, Box } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import SectionHeader from "./SectionHeader";
+import GlassCard from "./GlassCard";
+
+function CardContent({ card, isEducation }) {
+  return (
+    <div className="p-5 sm:p-6">
+      <div className={`flex flex-col ${isEducation ? "lg:flex-row lg:gap-6" : ""}`}>
+        <div className={isEducation ? "lg:flex-1" : ""}>
+          <span className="inline-flex rounded-full border border-purple-500/20 bg-purple-500/10 px-3 py-1 text-xs font-medium text-purple-300">
+            {isEducation ? "Education" : "Project"}
+          </span>
+
+          <h3 className="mt-3 text-lg font-semibold text-white sm:text-xl">
+            {card.title}
+          </h3>
+
+          <p className="mt-2 text-sm leading-relaxed text-slate-400">
+            {card.body}
+          </p>
+
+          <div className="mt-4 flex flex-wrap gap-3">
+            <a
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-400 transition-colors hover:text-purple-400"
+              href={card.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <ExternalLink size={12} />
+              {card.cta}
+            </a>
+            <a
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-slate-500 transition-colors hover:text-slate-300"
+              href={card.secondaryHref}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <ExternalLink size={12} />
+              {card.secondaryCta}
+            </a>
+          </div>
+        </div>
+
+        <div
+          className={`relative mt-4 overflow-hidden rounded-lg border border-white/[0.06] ${isEducation ? "lg:mt-0 lg:w-48 shrink-0" : ""} h-32 sm:h-40`}
+        >
+          <Image
+            src={card.image}
+            alt={card.title}
+            fill
+            className="object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function ProjectsSection({ cards }) {
+  const eduCard = cards.find((c) => c.title.includes("B.Tech"));
+  const projectCards = cards.filter((c) => !c.title.includes("B.Tech"));
+
   return (
-    <section id="education" className="mt-20 scroll-mt-32 sm:mt-24">
+    <section id="education" className="mt-16 scroll-mt-28 sm:mt-24">
       <SectionHeader
-        icon={GraduationCap}
-        eyebrow="SYSTEM_LOG: EDUCATION"
-        title="Knowledge & Builds"
-        description="A snapshot of my academic foundation at UEM Kolkata and the AI-driven projects I am architecting."
+        title="Projects"
+        description="Academic foundation at UEM Kolkata and projects I have built."
       />
 
-      <div className="mt-10 grid gap-5 sm:gap-6 lg:mt-12 lg:grid-cols-2">
-        {cards.map((card, index) => {
-          const isEducation = card.title.includes("B.Tech");
+      {eduCard && (
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          <GlassCard>
+            <CardContent card={eduCard} isEducation />
+          </GlassCard>
+        </motion.div>
+      )}
 
-          return (
-            <motion.article
-              key={card.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-gradient-to-br from-[#18181b] to-[#1f1f23] p-4 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-cyan-500/30 sm:p-6 lg:pl-[160px]"
-            >
-              {/* Gradient Accent */}
-              <div className="pointer-events-none absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-cyan-500 to-fuchsia-500 opacity-30" />
-              {/* Marble Sheen */}
-              <div className="pointer-events-none absolute inset-0 z-0 bg-[linear-gradient(135deg,transparent_25%,rgba(255,255,255,0.015)_50%,transparent_75%)]" />
-              {/* Subtle Background Glow on Hover */}
-              <div className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_var(--x,_50%)_var(--y,_50%),rgba(6,182,212,0.08)_0%,transparent_100%)] opacity-0 transition-opacity group-hover:opacity-100" />
-
-              {/* Card Image */}
-              <div className="relative z-10 mb-5 h-[150px] w-full overflow-hidden rounded-xl border border-white/10 sm:h-[170px] lg:absolute lg:left-6 lg:top-6 lg:mb-0 lg:h-[110px] lg:w-[110px]">
-                <Image
-                  src={card.image}
-                  alt={card.title}
-                  fill
-                  className="object-cover grayscale-[30%] transition-all duration-500 group-hover:grayscale-0 group-hover:scale-110"
-                />
-              </div>
-
-              {/* Category Tag */}
-              <span className={`relative z-10 mb-4 inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1 text-[10px] font-mono font-bold uppercase tracking-widest ${
-                isEducation 
-                  ? "border-cyan-500/30 bg-cyan-500/10 text-cyan-400" 
-                  : "border-fuchsia-500/30 bg-fuchsia-500/10 text-fuchsia-400"
-              }`}>
-                {isEducation ? <GraduationCap size={12} /> : <Box size={12} />}
-                {isEducation ? "ACADEMIC" : "PROJECT"}
-              </span>
-
-              {/* Content */}
-              <h4
-                className="text-xl font-black leading-tight tracking-tight text-white sm:text-2xl lg:text-3xl"
-                style={{ fontFamily: "var(--font-preahvihear)" }}
-              >
-                {card.title}
-              </h4>
-
-              <p className="relative z-10 mt-3 text-sm leading-relaxed text-gray-400 transition-colors group-hover:text-gray-300 sm:text-[15px]">
-                {card.body}
-              </p>
-
-              {/* Actions */}
-              <div className="relative z-10 mt-6 flex flex-wrap gap-3">
-                <a
-                  className="inline-flex items-center gap-2 rounded-md bg-white/5 border border-white/10 px-4 py-2 text-[11px] font-mono font-bold text-white transition-all hover:bg-cyan-500 hover:text-black hover:border-cyan-500"
-                  href={card.href}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <ExternalLink size={12} />
-                  {card.cta}
-                </a>
-                <a
-                  className="inline-flex items-center gap-2 rounded-md border border-white/5 bg-transparent px-4 py-2 text-[11px] font-mono font-bold text-gray-400 transition-all hover:text-white hover:border-white/20"
-                  href={card.secondaryHref}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {card.secondaryCta}
-                </a>
-              </div>
-
-              {/* Corner Accent (Cyberpunk Touch) */}
-                <div className="pointer-events-none absolute bottom-0 right-0 h-8 w-8 opacity-20 transition-opacity group-hover:opacity-100">
-                 <div className="absolute bottom-2 right-2 h-2 w-2 bg-cyan-500" />
-              </div>
-            </motion.article>
-          );
-        })}
+      <div className="mt-5 grid gap-5 sm:mt-6 sm:gap-6 lg:grid-cols-2">
+        {projectCards.map((card, index) => (
+          <motion.div
+            key={card.title}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.08 }}
+          >
+            <GlassCard>
+              <CardContent card={card} isEducation={false} />
+            </GlassCard>
+          </motion.div>
+        ))}
       </div>
     </section>
   );
