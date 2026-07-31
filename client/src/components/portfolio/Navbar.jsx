@@ -55,15 +55,13 @@ export default function Navbar({ items }) {
     setActiveSection(id);
     activeSectionRef.current = id;
 
-    const el = document.getElementById(id);
-    if (!el) return;
-
-    const navOffset = 88;
-    const y = Math.max(
-      0,
-      el.getBoundingClientRect().top + window.scrollY - navOffset
-    );
-    window.scrollTo({ top: y, behavior: "smooth" });
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        document
+          .getElementById(id)
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
   };
 
   return (
