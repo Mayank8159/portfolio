@@ -49,9 +49,21 @@ export default function Navbar({ items }) {
     };
   }, []);
 
-  const handleNavClick = (id) => {
+  const handleNavClick = (e, id) => {
+    e.preventDefault();
     setNavOpen(false);
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setActiveSection(id);
+    activeSectionRef.current = id;
+
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const navOffset = 88;
+    const y = Math.max(
+      0,
+      el.getBoundingClientRect().top + window.scrollY - navOffset
+    );
+    window.scrollTo({ top: y, behavior: "smooth" });
   };
 
   return (
@@ -66,7 +78,7 @@ export default function Navbar({ items }) {
           {/* Brand */}
           <a
             href="#home"
-            onClick={() => handleNavClick("home")}
+            onClick={(e) => handleNavClick(e, "home")}
             className="group flex items-center"
           >
             <span className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-1.5 transition-all group-hover:border-violet-500/40 group-hover:shadow-[0_0_12px_rgba(124,58,237,0.25)]">
@@ -83,7 +95,7 @@ export default function Navbar({ items }) {
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                onClick={() => handleNavClick(item.id)}
+                onClick={(e) => handleNavClick(e, item.id)}
                 className={`relative rounded-full px-3 py-1 text-sm font-medium transition-colors ${
                   activeSection === item.id
                     ? "text-white"
@@ -133,7 +145,7 @@ export default function Navbar({ items }) {
                   <a
                     key={item.id}
                     href={`#${item.id}`}
-                    onClick={() => handleNavClick(item.id)}
+                    onClick={(e) => handleNavClick(e, item.id)}
                     className={`rounded-lg px-4 py-2.5 text-sm transition-colors ${
                       activeSection === item.id
                         ? "bg-white/5 text-white"
