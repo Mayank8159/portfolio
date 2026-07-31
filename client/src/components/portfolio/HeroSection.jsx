@@ -37,15 +37,20 @@ export default function HeroSection() {
     <section id="home" className="flex min-h-[70vh] scroll-mt-32 flex-col items-center justify-center py-24 sm:py-32">
       <div className="flex w-full max-w-3xl flex-col items-center gap-6 text-center lg:flex-row lg:gap-10 lg:items-start lg:text-left">
         <div className="shrink-0">
-          <div className="relative rounded-2xl bg-gradient-to-b from-zinc-700 via-zinc-950 to-black p-2 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] ring-1 ring-white/10">
-            <div className="relative h-32 w-28 overflow-hidden rounded-xl border border-white/5 sm:h-40 sm:w-32 lg:h-48 lg:w-40">
-              <Image
-                src="/profilePic.jpeg"
-                alt="Mayank Sharma"
-                fill
-                className="object-cover"
-                priority
-              />
+          <div className="relative">
+            {/* Theme glow around the edge */}
+            <div className="pointer-events-none absolute -inset-1.5 rounded-[20px] bg-gradient-to-br from-violet-600/60 via-indigo-500/40 to-purple-500/60 blur-lg" />
+
+            <div className="relative rounded-2xl bg-gradient-to-b from-zinc-700 via-zinc-950 to-black p-2 shadow-[0_0_35px_rgba(124,58,237,0.35)] ring-1 ring-violet-500/20">
+              <div className="relative h-32 w-28 overflow-hidden rounded-xl border border-white/5 sm:h-40 sm:w-32 lg:h-48 lg:w-40">
+                <Image
+                  src="/profilePic.jpeg"
+                  alt="Mayank Sharma"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
             </div>
           </div>
         </div>
