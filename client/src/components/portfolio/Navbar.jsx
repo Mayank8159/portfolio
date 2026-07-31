@@ -49,12 +49,9 @@ export default function Navbar({ items }) {
     };
   }, []);
 
-  const handleNavClick = (e, id) => {
-    e.preventDefault();
+  const handleNavClick = (id) => {
     setNavOpen(false);
-    requestAnimationFrame(() => {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
@@ -69,7 +66,7 @@ export default function Navbar({ items }) {
           {/* Brand */}
           <a
             href="#home"
-            onClick={(e) => handleNavClick(e, "home")}
+            onClick={() => handleNavClick("home")}
             className="group flex items-center"
           >
             <span className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-1.5 transition-all group-hover:border-violet-500/40 group-hover:shadow-[0_0_12px_rgba(124,58,237,0.25)]">
@@ -84,7 +81,7 @@ export default function Navbar({ items }) {
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                onClick={(e) => handleNavClick(e, item.id)}
+                onClick={() => handleNavClick(item.id)}
                 className={`relative rounded-full px-3 py-1 text-sm font-medium transition-colors ${
                   activeSection === item.id
                     ? "text-white"
@@ -134,7 +131,7 @@ export default function Navbar({ items }) {
                   <a
                     key={item.id}
                     href={`#${item.id}`}
-                    onClick={(e) => handleNavClick(e, item.id)}
+                    onClick={() => handleNavClick(item.id)}
                     className={`rounded-lg px-4 py-2.5 text-sm transition-colors ${
                       activeSection === item.id
                         ? "bg-white/5 text-white"
