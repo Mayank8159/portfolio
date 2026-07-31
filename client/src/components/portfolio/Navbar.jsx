@@ -70,8 +70,10 @@ export default function Navbar({ items }) {
             className="group flex items-center"
           >
             <span className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-1.5 transition-all group-hover:border-violet-500/40 group-hover:shadow-[0_0_12px_rgba(124,58,237,0.25)]">
-              <span aria-hidden="true" className="text-[10px] leading-none text-violet-400 transition-colors group-hover:text-violet-300">✦</span>
-              <span className="text-sm font-bold tracking-tight text-white transition-colors group-hover:text-violet-300">MS</span>
+              <span className="flex items-center gap-1.5 text-sm font-bold tracking-tight transition-colors group-hover:text-violet-300">
+                <span className="text-white">Mayank</span>
+                <span className="text-white">Sharma</span>
+              </span>
             </span>
           </a>
 
