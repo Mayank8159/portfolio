@@ -92,11 +92,7 @@ export default function Navbar({ items }) {
                 }`}
               >
                 {activeSection === item.id && (
-                  <motion.div
-                    layoutId="navPill"
-                    className="absolute inset-0 rounded-full border border-white/10 bg-white/5"
-                    transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
-                  />
+                  <div className="absolute inset-0 rounded-full border border-white/10 bg-white/5" />
                 )}
                 <span className="relative z-10">{item.label}</span>
               </a>

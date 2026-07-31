@@ -1,59 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useMotionValue, useTransform, animate, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const DURATION = 40;
 
-function WheelSkill({ angle, skill, offset, radius }) {
-  const rad = (a) => ((a + offset) * Math.PI) / 180;
-
-  const x = useTransform(angle, (a) => Math.cos(rad(a)) * radius);
-  const y = useTransform(angle, (a) => Math.sin(rad(a)) * radius);
-
-  return (
-    <motion.div
-      style={{
-        position: "absolute",
-        left: "50%",
-        top: "50%",
-        x,
-        y,
-      }}
-    >
-      <div
-        style={{ transform: "translate(-50%, -50%)" }}
-        className="flex items-center gap-2 whitespace-nowrap rounded-full border border-white/10 bg-slate-950/80 px-3 py-1.5 backdrop-blur-md"
-      >
-        <div className="relative h-4 w-4 shrink-0">
-          <Image
-            src={skill.logo}
-            alt={skill.name}
-            fill
-            className="object-contain"
-          />
-        </div>
-        <span className="text-xs text-white">{skill.name}</span>
-      </div>
-    </motion.div>
-  );
-}
-
 export default function SkillsSection({ skills }) {
   const containerRef = useRef(null);
   const [radius, setRadius] = useState(220);
-
-  const angle = useMotionValue(0);
-
-  useEffect(() => {
-    const controls = animate(angle, 360, {
-      duration: DURATION,
-      ease: "linear",
-      repeat: Infinity,
-    });
-    return controls.stop;
-  }, []);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -94,15 +48,36 @@ export default function SkillsSection({ skills }) {
           </h2>
         </div>
 
-        {skills.map((skill, i) => (
-          <WheelSkill
-            key={skill.name}
-            angle={angle}
-            skill={skill}
-            offset={(i * 360) / skills.length}
-            radius={radius}
-          />
-        ))}
+        {/* Orbiting ring: the wrapper spins around the hub, each pill's counter-spin keeps it upright */}
+        <div className="absolute left-1/2 top-1/2 animate-wheel-spin motion-reduce:animate-none">
+          {skills.map((skill, i) => {
+            const a = (i * 360) / skills.length;
+            const rad = (a * Math.PI) / 180;
+            const dx = Math.cos(rad) * radius;
+            const dy = Math.sin(rad) * radius;
+            return (
+              <div
+                key={skill.name}
+                className="absolute left-0 top-0"
+                style={{ transform: `translate(-50%, -50%) translate(${dx}px, ${dy}px)` }}
+              >
+                <div className="animate-wheel-counter-spin motion-reduce:animate-none">
+                  <div className="flex items-center gap-2 whitespace-nowrap rounded-full border border-white/10 bg-slate-950/80 px-3 py-1.5 backdrop-blur-md">
+                    <div className="relative h-4 w-4 shrink-0">
+                      <Image
+                        src={skill.logo}
+                        alt={skill.name}
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <span className="text-xs text-white">{skill.name}</span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

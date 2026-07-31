@@ -7,6 +7,8 @@
   --animate-flame-glow: flame-glow 3s ease-in-out infinite;
   --animate-flame-flicker: flame-flicker 0.8s ease-in-out infinite;
   --animate-ring-spin: ring-spin 4s linear infinite;
+  --animate-wheel-spin: wheel-spin 40s linear infinite;
+  --animate-wheel-counter-spin: wheel-counter-spin 40s linear infinite;
 }
 
 @keyframes fade-slide {
@@ -40,6 +42,16 @@
 @keyframes ring-spin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
+}
+
+@keyframes wheel-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes wheel-counter-spin {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
 }
 
 html {
