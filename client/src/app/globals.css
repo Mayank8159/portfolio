@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-instrument-serif);
+  --font-cursive: var(--font-instrument-serif);
   --breakpoint-xs: 480px;
   --animate-fade-slide: fade-slide 0.5s ease-out 0.1s both;
   --animate-flame-glow: flame-glow 3s ease-in-out infinite;
@@ -9,6 +10,10 @@
   --animate-ring-spin: ring-spin 4s linear infinite;
   --animate-wheel-spin: wheel-spin 40s linear infinite;
   --animate-wheel-counter-spin: wheel-counter-spin 40s linear infinite;
+}
+
+.font-cursive {
+  font-style: italic;
 }
 
 @keyframes fade-slide {

@@ -67,7 +67,8 @@ export default function ProjectsSection({ cards }) {
   return (
     <section id="education" className="mt-16 scroll-mt-28 sm:mt-24">
       <SectionHeader
-        title="Projects"
+        title="Featured"
+        accent="Projects"
         description="Academic foundation at UEM Kolkata and projects I have built."
       />
 

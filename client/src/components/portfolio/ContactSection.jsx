@@ -58,7 +58,7 @@ export default function ContactSection() {
           transition={{ delay: 0.1 }}
           className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl"
         >
-          Let&apos;s build something extraordinary together.
+          Let&apos;s build something <span className="font-cursive text-[1.15em] text-purple-300">extraordinary</span> together.
         </motion.h2>
 
         <motion.p

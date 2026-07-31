@@ -56,7 +56,7 @@ export default function HeroSection() {
         <div className="flex flex-col items-center lg:items-start animate-fade-slide">
           <h1 className="max-w-4xl text-3xl font-bold leading-[1.15] tracking-tight sm:text-5xl md:text-6xl">
             <span className="text-white">{before}</span>
-            <span className="bg-gradient-to-r from-white via-purple-300 to-purple-400 bg-clip-text text-transparent">
+            <span className="font-cursive bg-gradient-to-r from-white via-purple-300 to-purple-400 bg-clip-text text-transparent">
               {during}
             </span>
             {count > INT_END + 1 && <br />}

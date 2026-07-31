@@ -43,7 +43,7 @@ export default function SkillsSection({ skills }) {
 
         <div className="absolute z-10 flex flex-col items-center">
           <div className="absolute -top-6 h-40 w-40 rounded-full bg-violet-500/15 blur-3xl" />
-          <h2 className="relative bg-gradient-to-r from-violet-400 to-indigo-300 bg-clip-text text-3xl font-extrabold text-transparent sm:text-4xl md:text-5xl">
+          <h2 className="relative font-cursive bg-gradient-to-r from-violet-400 to-indigo-300 bg-clip-text text-4xl text-transparent sm:text-5xl md:text-6xl">
             Skills
           </h2>
         </div>

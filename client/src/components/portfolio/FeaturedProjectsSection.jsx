@@ -42,7 +42,7 @@ export default function FeaturedProjectsSection() {
           viewport={{ once: true }}
           className="text-2xl font-bold text-white sm:text-3xl"
         >
-          Featured Work
+          Featured <span className="font-cursive text-[1.15em] text-purple-300">Work</span>
         </motion.h2>
       </div>
 

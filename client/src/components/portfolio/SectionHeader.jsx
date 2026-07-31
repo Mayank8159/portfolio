@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export default function SectionHeader({ title, description }) {
+export default function SectionHeader({ title, description, accent }) {
   return (
     <div className="mb-8 sm:mb-12">
       <motion.h2
@@ -12,6 +12,9 @@ export default function SectionHeader({ title, description }) {
         className="text-2xl font-bold text-white sm:text-3xl"
       >
         {title}
+        {accent && (
+          <span className="font-cursive text-[1.15em] text-purple-300"> {accent}</span>
+        )}
       </motion.h2>
 
       {description ? (
