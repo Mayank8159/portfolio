@@ -1,4 +1,4 @@
-import BackgroundGlow from "@/components/portfolio/BackgroundGlow";
+import Background from "@/components/portfolio/Background";
 import Navbar from "@/components/portfolio/Navbar";
 import HeroSection from "@/components/portfolio/HeroSection";
 import ProjectsSection from "@/components/portfolio/ProjectsSection";
@@ -11,8 +11,7 @@ import { cards, navItems, skillLogos, researchPapers, hobbies } from "@/data/por
 
 export default function Home() {
   return (
-    <>
-      <BackgroundGlow />
+    <Background>
       <main className="relative mx-auto w-full max-w-[720px] px-4 sm:px-6 pb-12 pt-12 sm:pb-16 sm:pt-16">
         <Navbar items={navItems} />
 
@@ -30,6 +29,6 @@ export default function Home() {
 
       <ContactSection />
     </main>
-    </>
+    </Background>
   );
 }
