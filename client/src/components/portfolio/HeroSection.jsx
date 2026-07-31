@@ -37,29 +37,15 @@ export default function HeroSection() {
     <section id="home" className="flex min-h-[70vh] scroll-mt-32 flex-col items-center justify-center py-24 sm:py-32">
       <div className="flex w-full max-w-3xl flex-col items-center gap-6 text-center lg:flex-row lg:gap-10 lg:items-start lg:text-left">
         <div className="shrink-0">
-          <div className="relative flex flex-col items-center">
-            {/* Bright flickering fire glow */}
-            <div className="absolute -inset-12 rounded-full bg-[radial-gradient(circle,rgba(251,146,60,0.5),rgba(239,68,68,0.2)_55%,transparent_75%)] blur-2xl animate-flame-glow" />
-            <div className="absolute -inset-6 rounded-full bg-[radial-gradient(circle,rgba(254,215,170,0.45),rgba(249,115,22,0.25)_60%,transparent_80%)] blur-xl animate-flame-flicker" />
-
-            {/* Black oil lamp */}
-            <div className="relative">
-              {/* Fire glow + flicker on the outer rim only (behind the opaque lamp) */}
-              <div className="pointer-events-none absolute -inset-1.5 rounded-2xl bg-gradient-to-br from-orange-400/70 via-red-500/50 to-amber-300/70 blur-md animate-flame-flicker" />
-              <div className="pointer-events-none absolute -inset-4 rounded-2xl bg-orange-500/25 blur-lg animate-flame-flicker" />
-
-              {/* Opaque lamp body — clean image inside */}
-              <div className="relative rounded-2xl bg-gradient-to-b from-zinc-700 via-zinc-950 to-black p-2 shadow-[0_0_55px_rgba(249,115,22,0.45)] ring-1 ring-white/10">
-                <div className="relative h-32 w-28 overflow-hidden rounded-xl border border-white/5 sm:h-40 sm:w-32 lg:h-48 lg:w-40">
-                  <Image
-                    src="/profilePic.jpeg"
-                    alt="Mayank Sharma"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-              </div>
+          <div className="relative rounded-2xl bg-gradient-to-b from-zinc-700 via-zinc-950 to-black p-2 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)] ring-1 ring-white/10">
+            <div className="relative h-32 w-28 overflow-hidden rounded-xl border border-white/5 sm:h-40 sm:w-32 lg:h-48 lg:w-40">
+              <Image
+                src="/profilePic.jpeg"
+                alt="Mayank Sharma"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
           </div>
         </div>
