@@ -49,33 +49,52 @@ export default function Navbar({ items }) {
     };
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = navOpen ? "hidden" : "";
-  }, [navOpen]);
+  const handleNavClick = (e, id) => {
+    e.preventDefault();
+    setNavOpen(false);
+    requestAnimationFrame(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  };
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-[100] flex justify-center px-4 py-3 pointer-events-none">
-      <div className={`pointer-events-auto flex w-full max-w-4xl flex-col border border-white/10 bg-black/40 backdrop-blur-md transition-all ${
-        navOpen ? "rounded-2xl" : "rounded-full"
+    <header className="fixed top-4 left-1/2 z-50 w-[90%] max-w-4xl -translate-x-1/2 pointer-events-none">
+      <div className={`pointer-events-auto relative border border-white/10 bg-[#121218]/70 backdrop-blur-xl transition-all ${
+        navOpen ? "rounded-3xl" : "rounded-full"
       }`}>
-        <div className="flex h-12 items-center justify-between px-4 sm:h-14 sm:px-5">
-          <span className="text-sm font-semibold text-white tracking-tight">MS</span>
+        {/* Top light highlight */}
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-          <nav className="hidden lg:flex items-center gap-1">
+        <div className="flex items-center justify-between gap-2 px-3 py-2.5 sm:px-6 sm:py-3">
+          {/* Brand */}
+          <a
+            href="#home"
+            onClick={(e) => handleNavClick(e, "home")}
+            className="group flex items-center"
+          >
+            <span className="flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-1.5 transition-all group-hover:border-violet-500/40 group-hover:shadow-[0_0_12px_rgba(124,58,237,0.25)]">
+              <span aria-hidden="true" className="text-[10px] leading-none text-violet-400 transition-colors group-hover:text-violet-300">✦</span>
+              <span className="text-sm font-bold tracking-tight text-white transition-colors group-hover:text-violet-300">MS</span>
+            </span>
+          </a>
+
+          {/* Center links (desktop) */}
+          <nav className="hidden items-center gap-1 lg:flex">
             {items.map((item) => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                className={`relative px-3.5 py-1.5 text-sm rounded-full transition-colors ${
+                onClick={(e) => handleNavClick(e, item.id)}
+                className={`relative rounded-full px-3 py-1 text-sm font-medium transition-colors ${
                   activeSection === item.id
                     ? "text-white"
-                    : "text-slate-400 hover:text-slate-200"
+                    : "text-slate-400 hover:text-white"
                 }`}
               >
                 {activeSection === item.id && (
                   <motion.div
                     layoutId="navPill"
-                    className="absolute inset-0 rounded-full bg-purple-500/20 border border-purple-500/30"
+                    className="absolute inset-0 rounded-full border border-white/10 bg-white/5"
                     transition={{ type: "spring", bounce: 0.15, duration: 0.5 }}
                   />
                 )}
@@ -84,19 +103,20 @@ export default function Navbar({ items }) {
             ))}
           </nav>
 
-          <div className="flex items-center gap-2">
+          {/* Right: CTA + mobile toggle */}
+          <div className="flex items-center gap-1.5 sm:gap-2">
             <a
               href="/MayankCV.pdf"
               download="MayankCV.pdf"
-              className="hidden xs:inline-flex px-4 py-1.5 rounded-full text-sm font-medium bg-gradient-to-r from-violet-600 to-indigo-600 text-white transition-all hover:shadow-[0_0_20px_rgba(124,58,237,0.4)]"
+              className="hidden xs:inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-2 text-xs font-semibold text-white transition-all hover:shadow-[0_0_15px_rgba(124,58,237,0.5)]"
             >
-              CV
+              Resume <span aria-hidden="true">↗</span>
             </a>
 
             <button
               aria-label={navOpen ? "Close menu" : "Open menu"}
               aria-expanded={navOpen}
-              className="flex h-8 w-8 items-center justify-center rounded-full text-slate-400 lg:hidden hover:text-white hover:bg-white/5 transition-colors"
+              className="flex h-8 w-8 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-white/5 hover:text-white lg:hidden"
               onClick={() => setNavOpen(!navOpen)}
             >
               {navOpen ? <X size={16} /> : <Menu size={16} />}
@@ -104,24 +124,25 @@ export default function Navbar({ items }) {
           </div>
         </div>
 
+        {/* Mobile menu */}
         <AnimatePresence>
           {navOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden overflow-hidden"
+              className="overflow-hidden lg:hidden"
             >
-              <div className="flex flex-col gap-1 px-4 pb-4 pt-2 border-t border-white/10">
+              <div className="flex flex-col gap-1 border-t border-white/10 px-4 pb-4 pt-3">
                 {items.map((item) => (
                   <a
                     key={item.id}
                     href={`#${item.id}`}
-                    onClick={() => setNavOpen(false)}
-                    className={`px-4 py-2.5 rounded-lg text-sm transition-colors ${
+                    onClick={(e) => handleNavClick(e, item.id)}
+                    className={`rounded-lg px-4 py-2.5 text-sm transition-colors ${
                       activeSection === item.id
-                        ? "bg-purple-500/10 text-purple-300"
-                        : "text-slate-400 hover:text-white hover:bg-white/5"
+                        ? "bg-white/5 text-white"
+                        : "text-slate-400 hover:bg-white/5 hover:text-white"
                     }`}
                   >
                     {item.label}
@@ -131,9 +152,9 @@ export default function Navbar({ items }) {
                   href="/MayankCV.pdf"
                   download="MayankCV.pdf"
                   onClick={() => setNavOpen(false)}
-                  className="xs:hidden mt-2 px-4 py-2.5 rounded-lg text-sm text-center bg-gradient-to-r from-violet-600 to-indigo-600 text-white"
+                  className="xs:hidden mt-2 flex items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 px-4 py-2.5 text-xs font-semibold text-white"
                 >
-                  CV
+                  Resume <span aria-hidden="true">↗</span>
                 </a>
               </div>
             </motion.div>
